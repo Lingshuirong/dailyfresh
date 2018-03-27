@@ -35,7 +35,8 @@
 		<a href="index.html" class="logo fl"><img src="../static/images/logo.png"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
 		<div class="search_con fr">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="text" clas
+                   s="input_text fl" name="" placeholder="搜索商品">
 			<input type="button" class="input_btn fr" name="" value="搜索">
 		</div>		
 	</div>
@@ -54,31 +55,42 @@
 				<div class="site_con">
 					<dl>
 						<dt>当前地址：</dt>
-						<dd>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>
-					</dl>					
+                        {% if address %}
+                            {#						<dd>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>#}
+                            <dd>{{ address.detail_addr }}&nbsp;&nbsp;&nbsp;({{ address.receiver_name }}&nbsp;收)&nbsp;&nbsp;&nbsp;{{ address.receiver_mobile }}</dd>
+                        {% else %}
+                            <dd>无</dd>
+                        {% endif %}
+
+					</dl>
 				</div>
 				<h3 class="common_title2">编辑地址</h3>
 				<div class="site_con">
-					<form>
+
+					<form method="post">
+                        {% csrf_token %}
 						<div class="form_group">
 							<label>收件人：</label>
-							<input type="text" name="">
+							<input type="text" name="reciver">
 						</div>
 						<div class="form_group form_group2">
 							<label>详细地址：</label>
-							<textarea class="site_area"></textarea>
+							<textarea class="site_area" name="address"></textarea>
 						</div>
 						<div class="form_group">
 							<label>邮编：</label>
-							<input type="text" name="">
+							<input type="text" name="zip_code">
 						</div>
 						<div class="form_group">
 							<label>手机：</label>
-							<input type="text" name="">
+							<input type="text" name="mobile">
 						</div>
+                        {{ errmsg }}
 
 						<input type="submit" name="" value="提交" class="info_submit">
 					</form>
+
+
 				</div>
 		</div>
 	</div>

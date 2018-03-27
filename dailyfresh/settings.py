@@ -122,4 +122,35 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/../static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+CACHES = {
+    "default":{
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/4",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+#会话配置
+# SESSION_ENGINE = 'redis_sessions.session'
+# SESSION_REDIS_HOST = 'localhost'
+# SESSION_REDIS_PORT = 6379
+# SESSION_REDIS_DB = 2
+# SESSION_REDIS_PASSWORD = ''
+# SESSION_REDIS_PREFIX = 'session'
+
+
+#邮箱配置信息
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '18122702544@163.com'
+EMAIL_HOST_PASSWORD = 'lsr686242'
+EMAIL_FROM = '天天生鲜<18122702544@163.com>'
+
+
+#配置login
+LOGIN_URL = '/users/login'

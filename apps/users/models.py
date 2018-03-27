@@ -2,6 +2,9 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
+
+from django.shortcuts import render
+from django.views.generic.base import View
 from tinymce.models import HTMLField
 
 from utils.models import BaseModel
@@ -29,28 +32,4 @@ class Address(BaseModel):
 
 
 
-#测试类
-class TestModel(models.Model):
-    """测试"""
-    ORDER_STATUS_CHOICES = (
-        (1, '待支付'),
-        (2, '待发货'),
-        (3, '待收货'),
-        (4, '待评价'),
-        (5, '已完成'),
-    )
 
-    status = models.SmallIntegerField(default=1, verbose_name='订单状态' \
-                                      , choices=ORDER_STATUS_CHOICES)
-
-    class Meta(object):
-        db_table = 'df_test'
-        verbose_name = '测试模型'
-        verbose_name_plural = verbose_name  # 去除verboser_name后面的s
-
-
-class TestModelHtml(models.Model):
-    """测试"""
-
-    # 富文本控件
-    desc = HTMLField(verbose_name='商品描述',null=True)
