@@ -136,8 +136,8 @@ class LoginView(View):
         """提交用户登陆信息"""
 
         username = request.POST.get('username')
-        print(username)
         password = request.POST.get('password')
+        remember = request.POST.get('remember')
 
         # 判断用户信息是否为空
         # if not all([username, password]):
@@ -159,6 +159,14 @@ class LoginView(View):
         # 校验参数合法性
         if not all([username, password]):
             return render(request, 'login.html', {'errmsg': '请求参数不完整'})
+
+        #判断用户是否选择记住用户名
+        if remember != 'on':
+            #value等于0的时候，关闭浏览器就失效
+            request.session.set_expiry(0)
+        else:
+            #value等于None的时候，默认两个星期失效
+            request.session.set_expiry(None)
 
         # 通过 django 提供的authenticate方法，
         # 验证用户名和密码是否正确
