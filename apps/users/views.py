@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.core.signing import SignatureExpired
 from django.core.urlresolvers import reverse
+from django_redis import get_redis_connection
 from  itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from django.db.backends.mysql.base import IntegrityError
 from django.db.utils import IntegrityError
@@ -15,6 +16,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from django.views.generic.base import View
 
+from apps.goods.models import GoodsSKU
 from apps.users.models import User, Address
 from celery_task.tasks import send_active_mail
 from dailyfresh import settings
@@ -260,10 +262,32 @@ class UserInforView(LoginRequiredMixin, View):
         user = request.user
 
         # 获取地址对象
-        address = user.address_set.latest('create_time')
+        try:
+            address = user.address_set.latest('create_time')
+        except Exception:
+            address = None
+
+        #从redis数据库中查询出用户浏览过的商品记录
+        strict_redis = get_redis_connection('default')
+        key = 'history_%s' %request.user.id
+
+        #查看最多五条记录
+        goods_ids = strict_redis.lrange(key,0,4)
+        print(goods_ids)
+
+        #保证数据库查询后，顺序不变
+        skus = []
+        for id in goods_ids:
+            try:
+                sku = GoodsSKU.objects.get(id=id)
+                skus.append(sku)
+            except GoodsSKU.DoesNotExist:
+                pass
+
         data = {
             'which_page': 1,
             'address': address,
+            'skus': skus,
         }
 
         return render(request, 'user_center_info.html', data)

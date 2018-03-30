@@ -161,3 +161,6 @@ EMAIL_FROM = '天天生鲜<18122702544@163.com>'
 
 #配置login
 LOGIN_URL = '/users/login'
+
+#配置django自定义存储系统
+DEFAULT_FILE_STORAGE = 'utils.fastdfs.storage.FdfsStorage'
