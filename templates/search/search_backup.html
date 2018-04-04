@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+<body>
+
+<h3>搜索结果：</h3>
+query: {{ query }} </br>
+paginator: {{ paginator }} </br>
+page: {{ page }} </br>
+
+{% for item in page %}
+    {{ item }}------{{ item.object }} </br>
+
+{% endfor %}
+
+
+</body>
+</html>

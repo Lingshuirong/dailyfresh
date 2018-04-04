@@ -10,9 +10,10 @@ from django.views.generic.base import View
 from django_redis import get_redis_connection
 
 from apps.goods.models import GoodsCategory, IndexSlideGoods, IndexPromotion, IndexCategoryGoods, GoodsSKU
+from utils.common import BaseCartView
 
 
-class IndexView(View):
+class IndexView(BaseCartView):
     """首页"""
 
     def get(self, request):
@@ -60,16 +61,7 @@ class IndexView(View):
             print('缓存不为空，从缓存中读取')
 
         # 查询购物车中商品数量（动态生成）
-        cart_count = 0
-        if request.user.is_authenticated():
-            # 获取当前登陆用户添加到购物车的商品总数量
-            strict_redis = get_redis_connection()
-            key = 'cart_%s' % request.user.id
-            # 获取所有数量
-            vals = strict_redis.hvals(key)
-            # 累加商品数量
-            for count in vals:
-                cart_count += int(count)
+        cart_count = super().get_cart_count(request)
 
         # 更新数据
         context.update({'cart_count': cart_count})
@@ -77,7 +69,7 @@ class IndexView(View):
         return render(request, 'index.html', context)
 
 
-class DetailView(View):
+class DetailView(BaseCartView):
     """进入商品详情页面"""
 
     def get(self, request, sku_id):
@@ -99,7 +91,7 @@ class DetailView(View):
         other_skus = sku.spu.goodssku_set.exclude(id=sku.id)
 
         # 购物车中商品数量
-        cart_count = 0
+
         # 判断用户是否登陆
         if request.user.is_authenticated():
             # 获取用户id
@@ -107,12 +99,13 @@ class DetailView(View):
 
             # 从redis中获取购物车的信息
             strict_redis = get_redis_connection('default')
-            cart_dict = strict_redis.hgetall('cart_%s' % user_id)
-            for val in cart_dict.values():
-                cart_count += int(val)
+            # cart_dict = strict_redis.hgetall('cart_%s' % user_id)
+            # for val in cart_dict.values():
+            #     cart_count += int(val)
+            cart_count = super().get_cart_count(request)
 
             # 移除现有的商品浏览记录
-            key = 'history_%s' % request.user.id
+            key = 'history_%s' % user_id
             strict_redis.lrem(key, 0, sku.id)
 
             # 从左侧添加新的商品浏览记录
@@ -121,19 +114,19 @@ class DetailView(View):
             # 控制历史浏览记录最多保存3项(包含头尾)
             strict_redis.ltrim(key, 0, 2)
 
-            context = {
-                'categories': categories,
-                'sku': sku,
-                'new_skus': new_skus,
-                'cart_count': cart_count,
-                'other_skus': other_skus,
+        context = {
+            'categories': categories,
+            'sku': sku,
+            'new_skus': new_skus,
+            'cart_count': cart_count,
+            'other_skus': other_skus,
 
-            }
+        }
 
         return render(request, 'detail.html', context)
 
 
-class ListView(View):
+class ListView(BaseCartView):
     """商品列表"""
 
     def get(self, request, category_id, page_num):
@@ -179,30 +172,30 @@ class ListView(View):
         page_list = paginator.page_range
 
         # 购物车
-        cart_count = 0
         # 如果是登录的用户
         if request.user.is_authenticated():
             # 获取用户id
-            user_id = request.user.id
+            # user_id = request.user.id
 
             # 从redis中获取购物车的信息
-            strict_redis = get_redis_connection()
+            # strict_redis = get_redis_connection()
 
             # 如果redis中不存在，会返回None
-            cart_dict = strict_redis.hgetall('cart_%s' % user_id)
-            for val in cart_dict.values():
-                cart_count += int(val)
+            # cart_dict = strict_redis.hgetall('cart_%s' % user_id)
+            # for val in cart_dict.values():
+            #     cart_count += int(val)
+            cart_count = super().get_cart_count(request)
 
             # 构造上下文
-            context = {
-                'category': category,
-                'categories': categories,
-                'page': page,
-                'new_skus': new_skus,
-                'page_list': page_list,
-                'cart_count': cart_count,
-                'sort': sort,
-            }
+        context = {
+            'category': category,
+            'categories': categories,
+            'page': page,
+            'new_skus': new_skus,
+            'page_list': page_list,
+            'cart_count': cart_count,
+            'sort': sort,
+        }
 
-            print(skus)
-            return render(request, 'list.html', context)
+
+        return render(request, 'list.html', context)

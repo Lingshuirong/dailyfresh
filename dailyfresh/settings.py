@@ -16,7 +16,6 @@ import redis_sessions
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'koude*hui7x2g@1l7@66)!tk!_iv271hy5bre$bjm#j+lk-8c!'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -43,6 +41,7 @@ INSTALLED_APPS = (
     'apps.orders',
     'apps.cart',
     'tinymce',
+    'haystack',  # 使用haystack全文检索框架
 )
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -86,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dailyfresh.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -99,11 +97,8 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
 
-
-
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -118,16 +113,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-#Django项目的缓存配置
+# Django项目的缓存配置
 CACHES = {
-    "default":{
+    "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/4",
         "OPTIONS": {
@@ -137,11 +131,11 @@ CACHES = {
     }
 }
 
-#session数据缓存到redis中
+# session数据缓存到redis中
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
-#会话配置
+# 会话配置
 # SESSION_ENGINE = 'redis_sessions.session'
 # SESSION_REDIS_HOST = 'localhost'
 # SESSION_REDIS_PORT = 6379
@@ -150,7 +144,7 @@ SESSION_CACHE_ALIAS = "default"
 # SESSION_REDIS_PREFIX = 'session'
 
 
-#邮箱配置信息
+# 邮箱配置信息
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25
@@ -158,9 +152,25 @@ EMAIL_HOST_USER = '18122702544@163.com'
 EMAIL_HOST_PASSWORD = 'lsr686242'
 EMAIL_FROM = '天天生鲜<18122702544@163.com>'
 
-
-#配置login
+# 配置login
 LOGIN_URL = '/users/login'
 
-#配置django自定义存储系统
+# 配置django自定义存储系统
 DEFAULT_FILE_STORAGE = 'utils.fastdfs.storage.FdfsStorage'
+
+# 配置haystack框架
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        # 使用whoosh搜索引擎(使用jiebar中文分词分词工具)
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        # 指定生成的索引库保存在那个目录下
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+
+    }
+}
+
+# 当添加，修改，删除了数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# 设置全文检索结果每页显示2条数据
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
