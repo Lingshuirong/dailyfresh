@@ -4,6 +4,7 @@ from celery.app.base import Celery
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.core.paginator import Paginator, EmptyPage
 from django.core.signing import SignatureExpired
 from django.core.urlresolvers import reverse
 from django_redis import get_redis_connection
@@ -17,6 +18,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import View
 
 from apps.goods.models import GoodsSKU
+from apps.orders.models import OrderInfo, OrderGoods
 from apps.users.models import User, Address
 from celery_task.tasks import send_active_mail
 from dailyfresh import settings
@@ -162,12 +164,12 @@ class LoginView(View):
         if not all([username, password]):
             return render(request, 'login.html', {'errmsg': '请求参数不完整'})
 
-        #判断用户是否选择记住用户名
+        # 判断用户是否选择记住用户名
         if remember != 'on':
-            #value等于0的时候，关闭浏览器就失效
+            # value等于0的时候，关闭浏览器就失效
             request.session.set_expiry(0)
         else:
-            #value等于None的时候，默认两个星期失效
+            # value等于None的时候，默认两个星期失效
             request.session.set_expiry(None)
 
         # 通过 django 提供的authenticate方法，
@@ -197,15 +199,16 @@ class LoginView(View):
 
         return redirect(reverse('goods:index'))
 
+
 class LogoutView(View):
     """退出登录"""
+
     def get(self, request):
         """退出登录处理逻辑"""
-        #由Django的认证系统完成，会清理cookie和session，request中包括了user对象
+        # 由Django的认证系统完成，会清理cookie和session，request中包括了user对象
         logout(request)
 
         return redirect(reverse('goods:index'))
-
 
 
 # 用户地址
@@ -267,15 +270,15 @@ class UserInforView(LoginRequiredMixin, View):
         except Exception:
             address = None
 
-        #从redis数据库中查询出用户浏览过的商品记录
+        # 从redis数据库中查询出用户浏览过的商品记录
         strict_redis = get_redis_connection('default')
-        key = 'history_%s' %request.user.id
+        key = 'history_%s' % request.user.id
 
-        #查看最多五条记录
-        goods_ids = strict_redis.lrange(key,0,4)
+        # 查看最多五条记录
+        goods_ids = strict_redis.lrange(key, 0, 4)
         print(goods_ids)
 
-        #保证数据库查询后，顺序不变
+        # 保证数据库查询后，顺序不变
         skus = []
         for id in goods_ids:
             try:
@@ -285,7 +288,7 @@ class UserInforView(LoginRequiredMixin, View):
                 pass
 
         data = {
-            'which_page': 1,
+            'which_page': 0,
             'address': address,
             'skus': skus,
         }
@@ -295,4 +298,45 @@ class UserInforView(LoginRequiredMixin, View):
 
 # 用户订单
 class UserOrderView(LoginRequiredMixin, View):
-    pass
+    def get(self, request, page):
+        user = request.user
+        # 查询登录用户的所有的订单
+        orders = OrderInfo.objects.filter(
+            user=user).order_by('-create_time')
+
+        for order in orders:
+            # 查询订单下所有的商品
+            order_skus = OrderGoods.objects.filter(order=order)
+            # 1 -> 待支付
+            order_desc = OrderInfo.ORDER_STATUS.get(order.status)
+            # 订单总金额
+            total_amount = 0
+
+            for sku in order_skus:
+                sku_amount = sku.price * sku.count
+                sku.sku_amount = sku_amount  # 订单小计金额
+                total_amount += sku_amount
+
+            # 动态地新增属性: 订单商品
+            order.skus = order_skus
+            order.order_desc = order_desc
+            order.total_pay = total_amount + order.trans_cost
+
+        # 创建分页
+        paginator = Paginator(orders, 2)
+        # Page对象
+        try:
+            page = paginator.page(page)
+        except EmptyPage:
+            # 默认显示第一页
+            page = paginator.page(1)
+
+        # 页码列表: [1, 2]
+        page_list = paginator.page_range
+        data = {
+            'which_page': 1,
+            'page': page,
+            'page_list': page_list,
+        }
+        return render(request, 'user_center_order.html', data)
+

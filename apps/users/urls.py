@@ -9,6 +9,6 @@ urlpatterns = [
     url(r'^login$', views.LoginView.as_view(), name='login'),  # 登陆
     url(r'^logout$', views.LogoutView.as_view(), name='logout'),  # 登出
     url(r'^address$', views.UserAddressView.as_view(), name='address'),
-    url(r'^order$', views.UserOrderView.as_view(), name='order'),
+    url(r'^order/(?P<page>\d+)$', views.UserOrderView.as_view(), name='order'),
     url(r'^', views.UserInforView.as_view(), name='info'),
 ]

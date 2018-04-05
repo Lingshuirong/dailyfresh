@@ -33,7 +33,7 @@
 					<span>|</span>
 					<a href="{% url 'cart:info' %}">我的购物车</a>
 					<span>|</span>
-					<a href="{% url 'users:order' %}">我的订单</a>
+					<a href="{% url 'users:order' 1 %}">我的订单</a>
 				</div>
 			</div>
 		</div>		
@@ -54,9 +54,12 @@
 		<div class="left_menu_con clearfix">
 			<h3>用户中心</h3>
 			<ul>
-				<li><a href="{% url 'users:info' %}" class="active">· 个人信息</a></li>
-				<li><a href="{% url 'users:order' %}">· 全部订单</a></li>
-				<li><a href="{% url 'users:address' %}">· 收货地址</a></li>
+				<li><a href="{% url 'users:info' %}"
+                       {% if which_page == 0 %}class="active"{% endif %}>· 个人信息</a></li>
+				<li><a href="{% url 'users:order' 1 %}"
+                        {% if which_page == 1 %}class="active"{% endif %}>· 全部订单</a></li>
+				<li><a href="{% url 'users:address' %}"
+                        {% if which_page == 2 %}class="active"{% endif %}>· 收货地址</a></li>
 			</ul>
 		</div>
 		<div class="right_content clearfix">

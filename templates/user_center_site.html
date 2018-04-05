@@ -31,7 +31,7 @@
 					<span>|</span>
 					<a href="{% url 'cart:info' %}">我的购物车</a>
 					<span>|</span>
-					<a href="{% url 'users:order' %}">我的订单</a>
+					<a href="{% url 'users:order' 1 %}">我的订单</a>
 				</div>
 			</div>
 		</div>		
@@ -53,7 +53,7 @@
 			<h3>用户中心</h3>
 			<ul>
 				<li><a href="{% url 'users:info' %}">· 个人信息</a></li>
-				<li><a href="{% url 'users:order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'users:order' 1 %}">· 全部订单</a></li>
 				<li><a href="{% url 'users:address' %}" class="active">· 收货地址</a></li>
 			</ul>
 		</div>

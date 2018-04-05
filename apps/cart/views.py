@@ -1,11 +1,13 @@
+from django.core.urlresolvers import reverse
 from django.http.response import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views.generic import View
 from django_redis import get_redis_connection
 
 from apps.goods.models import GoodsSKU
+from apps.users.models import Address
 from utils.common import LoginRequiredMixin
 
 
@@ -184,6 +186,13 @@ class CartDeleteView(View):
         sr.hdel(key, sku_id)
 
         return JsonResponse({'code': 0, 'errmssg': '删除商品成功'})
+
+
+
+
+
+
+
 
 
 
