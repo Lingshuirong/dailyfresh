@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'koude*hui7x2g@1l7@66)!tk!_iv271hy5bre$bjm#j+lk-8c!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -174,3 +174,6 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # 设置全文检索结果每页显示2条数据
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
+
+# 收集静态文件目录
+STATIC_ROOT = '/home/python/Desktop/static'

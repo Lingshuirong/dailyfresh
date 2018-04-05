@@ -1,0 +1,228 @@
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 19:52:07 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /home/python/code/dailyfresh
+chdir(): No such file or directory [core/uwsgi.c line 2629]
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 19:54:25 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8080 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:33702 (port auto-assigned) fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x25ee590
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x25ee590 pid: 112113 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 112113)
+spawned uWSGI worker 1 (pid: 112118, cores: 2)
+spawned uWSGI worker 2 (pid: 112119, cores: 2)
+spawned uWSGI worker 3 (pid: 112120, cores: 2)
+spawned uWSGI worker 4 (pid: 112121, cores: 2)
+spawned uWSGI http 1 (pid: 112122)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 112122)
+worker 1 buried after 2 seconds
+worker 2 buried after 2 seconds
+worker 3 buried after 2 seconds
+worker 4 buried after 2 seconds
+goodbye to uWSGI.
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 20:10:47 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8080 fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x1092490
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1092490 pid: 112739 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 112739)
+spawned uWSGI worker 1 (pid: 112743, cores: 2)
+spawned uWSGI worker 2 (pid: 112744, cores: 2)
+spawned uWSGI worker 3 (pid: 112745, cores: 2)
+spawned uWSGI worker 4 (pid: 112746, cores: 2)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 20:14:07 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8080).
+bind(): Address already in use [core/socket.c line 769]
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+Thu Apr  5 20:16:33 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Apr  5 20:16:33 2018 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 20:16:42 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8080 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:34277 (port auto-assigned) fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x20ad590
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x20ad590 pid: 112941 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 112941)
+spawned uWSGI worker 1 (pid: 112945, cores: 2)
+spawned uWSGI worker 2 (pid: 112946, cores: 2)
+spawned uWSGI worker 3 (pid: 112947, cores: 2)
+spawned uWSGI worker 4 (pid: 112948, cores: 2)
+spawned uWSGI http 1 (pid: 112949)
+缓存不为空，从缓存中读取
+[pid: 112947|app: 0|req: 1/1] 127.0.0.1 () {38 vars in 709 bytes} [Thu Apr  5 20:16:57 2018] GET /index => generated 16528 bytes in 2140 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 112947|app: 0|req: 2/2] 127.0.0.1 () {38 vars in 691 bytes} [Thu Apr  5 20:16:59 2018] GET /static/css/reset.css => generated 94 bytes in 80 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 112948|app: 0|req: 2/3] 127.0.0.1 () {38 vars in 666 bytes} [Thu Apr  5 20:16:59 2018] GET /js/slideshow.js => generated 89 bytes in 2326 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 112948|app: 0|req: 2/4] 127.0.0.1 () {38 vars in 705 bytes} [Thu Apr  5 20:16:59 2018] GET /static/images/logo.png => generated 96 bytes in 2391 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 112945|app: 0|req: 2/5] 127.0.0.1 () {38 vars in 672 bytes} [Thu Apr  5 20:16:59 2018] GET /static/js/slide.js => generated 92 bytes in 2392 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 112945|app: 0|req: 2/6] 127.0.0.1 () {38 vars in 688 bytes} [Thu Apr  5 20:16:59 2018] GET /static/js/jquery-ui.min.js => generated 100 bytes in 2400 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 112946|app: 0|req: 2/7] 127.0.0.1 () {38 vars in 696 bytes} [Thu Apr  5 20:16:59 2018] GET /static/js/jquery-1.12.4.min.js => generated 104 bytes in 2400 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 112946|app: 0|req: 2/8] 127.0.0.1 () {38 vars in 689 bytes} [Thu Apr  5 20:16:59 2018] GET /static/css/main.css => generated 93 bytes in 2409 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 112947|app: 0|req: 3/9] 127.0.0.1 () {38 vars in 658 bytes} [Thu Apr  5 20:17:02 2018] GET /favicon.ico => generated 85 bytes in 1 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+Thu Apr  5 20:17:36 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Apr  5 20:17:36 2018 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Apr  5 20:17:36 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Apr  5 20:17:36 2018 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.17 (64bit) on [Thu Apr  5 20:17:42 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8080 fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x243c490
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x243c490 pid: 113079 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 113079)
+spawned uWSGI worker 1 (pid: 113083, cores: 2)
+spawned uWSGI worker 2 (pid: 113084, cores: 2)
+spawned uWSGI worker 3 (pid: 113085, cores: 2)
+spawned uWSGI worker 4 (pid: 113088, cores: 2)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+[pid: 113084|app: 0|req: 1/1] 127.0.0.1 () {40 vars in 689 bytes} [Thu Apr  5 20:28:44 2018] GET /js/slideshow.js => generated 89 bytes in 1475 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 1/2] 127.0.0.1 () {42 vars in 787 bytes} [Thu Apr  5 20:28:51 2018] GET /users/login => generated 2119 bytes in 1649 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+admin
+[pid: 113088|app: 0|req: 2/3] 127.0.0.1 () {50 vars in 969 bytes} [Thu Apr  5 20:29:00 2018] POST /users/login => generated 0 bytes in 346 msecs (HTTP/1.1 302) 6 headers in 336 bytes (1 switches on core 1)
+缓存为空，数据将从mysql查找
+[pid: 113088|app: 0|req: 3/4] 127.0.0.1 () {44 vars in 817 bytes} [Thu Apr  5 20:29:00 2018] GET /index => generated 16528 bytes in 942 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 4/5] 127.0.0.1 () {40 vars in 694 bytes} [Thu Apr  5 20:29:01 2018] GET /js/slideshow.js => generated 89 bytes in 5 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 2/6] 127.0.0.1 () {42 vars in 780 bytes} [Thu Apr  5 20:29:09 2018] GET /cart/ => generated 11578 bytes in 115 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 3/7] 127.0.0.1 () {42 vars in 796 bytes} [Thu Apr  5 20:29:13 2018] GET /users/order/1 => generated 7273 bytes in 364 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051514291%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22186.60%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-05+20%3A29%3A17&version=1.0&sign=Kv8X7EBrxDX2Wuh8YZvf2ZY8mxDuPASYiM0%2BJEtSRn1KOci9xi816U6gHTvE5XHCxK%2FYkgMTA84WHCpHCH%2Bx%2FRT7jJmplx5CLAFX%2BvRcFYm1xXLlyNsK5kx1OOZHGZ3p2Qdkorv5WHwotvtv0x98QuKOEYic5aZWzoBMWN9hryS2cws9oCOR19bNavONIZiRqjBi9RfrgrpkLa9mGLH5%2BlFXDTywK1%2Bs%2Bn2MrG6kHKJ0dS5F%2FZl89PxK3VZ96%2ByRGud%2F1779xNYmqieDeTEUKJXPHxaoUsF8Y9%2BTK%2BDwSW7aomlPINyRV%2BreMUHP7haXnnzfv1ckfxT5Q0BkF%2F6nsQ%3D%3D
+[pid: 113088|app: 0|req: 5/8] 127.0.0.1 () {48 vars in 901 bytes} [Thu Apr  5 20:29:17 2018] POST /orders/pay => generated 822 bytes in 158 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 6/9] 127.0.0.1 () {48 vars in 905 bytes} [Thu Apr  5 20:29:18 2018] POST /orders/check => generated 27 bytes in 762 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051514291%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22186.60%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-05+20%3A29%3A29&version=1.0&sign=b9MT5wyNQt9NBob23e8XiRp6VcB9PpkC%2FmnVtyGuaOW51BfkMbTIPMkNpdkk3JY9gFcvzWY8kTN348wfV67Xcbz5kWje6ygtF1TQE2KiKi0Np6FLMeTzLLxdk6fAlHdM9iCmffLwHVCi%2FPXjXMQZiVVpAjdw8LYR2jUAClw5Ey2LBgw9fFvTI7GcCay0pDTfkvCj98swZyp1pXYNjP2YalqGJDjLwuAaTuxqHFGYT%2FkY4geRXu1tOSsygY0UH55GPqYFcpK2pAa5M7drshwJvGb9aQEycuw8Zw3uBAMfprgy47TPNNSoWS74kBylPUMzxSTj2bjOlmpFFoDe7so1LA%3D%3D
+[pid: 113088|app: 0|req: 7/10] 127.0.0.1 () {48 vars in 901 bytes} [Thu Apr  5 20:29:29 2018] POST /orders/pay => generated 798 bytes in 112 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 8/11] 127.0.0.1 () {48 vars in 905 bytes} [Thu Apr  5 20:29:29 2018] POST /orders/check => generated 27 bytes in 726 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 9/12] 127.0.0.1 () {42 vars in 788 bytes} [Thu Apr  5 20:31:17 2018] GET /index => generated 16528 bytes in 273 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 10/13] 127.0.0.1 () {40 vars in 694 bytes} [Thu Apr  5 20:31:18 2018] GET /js/slideshow.js => generated 89 bytes in 3 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
