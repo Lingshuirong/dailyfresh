@@ -217,55 +217,50 @@ class CommitOrderView(View):
 
 
 class OrderPayView(View):
-
     def post(self, request):
-        """支付功能"""
+        """订单支付"""
 
         if not request.user.is_authenticated():
-            return JsonResponse({'code': 1, 'message': '请先登录'})
+            return JsonResponse({'code': 1, 'message': '用户未登录'})
 
+        # 获取订单id
         order_id = request.POST.get('order_id')
-        if not order_id:
-            return JsonResponse({'code': 2, 'message': '订单id不能为空'})
 
+        # 判断订单是否有效(未支付)
         try:
             order = OrderInfo.objects.get(order_id=order_id,
-                                          status=1,
+                                          status=1,  # 未支付
                                           user=request.user)
         except OrderInfo.DoesNotExist:
-            return JsonResponse({'code': 3,'message': '订单无效'})
+            return JsonResponse({'code': 2, 'message': '无效订单'})
 
-
-        # 通过第三方sdk，调用支付宝接口，实现支付功能
-        # 1.初始化
+        # 调用 第三方sdk, 实现支付功能
+        # (1) 初始化sdk
         from alipay import AliPay
-        app_private_key_string = open('apps/orders/app_private_key.pem').read()
-        alipay_public_key_string = open('apps/orders/alipay_public_key.pem').read()
+        app_private_key_string = open("apps/orders/app_private_key.pem").read()
+        alipay_public_key_string = open("apps/orders/alipay_public_key.pem").read()
 
         alipay = AliPay(
-            appid='2016091000481374',
-            app_notify_url=None, #默认回调url
+            appid="2016091000481374",  # 沙箱应用
+            app_notify_url=None,  # 默认回调url
             app_private_key_string=app_private_key_string,
-            alipay_public_key_string=alipay_public_key_string,
-            # 支付宝的公钥，验证支付宝回传消息使用
-            sign_type='RSA2',
-            debug=True #Ture表示使用沙箱环境
+            alipay_public_key_string=alipay_public_key_string,  # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            sign_type="RSA2",  # RSA 或者 RSA2  # 不要使用rsa
+            debug=True  # 默认False  True: 表示使用测试环境(沙箱环境)
         )
 
-
-        # 2.调用支付接口
-        total_pay = order.total_amount + order.trans_cost
-        order_string = alipay.api_alipay_trade_app_pay(
-            out_trade_no=order_id,  # 订单号
-            total_amount=str(total_pay),
-            subject="生鲜测试订单",
-            return_url=None,
-            notify_url=None
+        # (2) 调用支付接口
+        # 支付总金额
+        total_pay = order.trans_cost + order.total_amount
+        # 支付返回的支付结果参数
+        order_str = alipay.api_alipay_trade_page_pay(
+            subject="天天生鲜支付订单",
+            out_trade_no=order_id,
+            total_amount=str(total_pay)  # 需要使用str类型, 不能使用浮点型
         )
-
-        # 响应浏览器，返回json数据
-        pay_url = 'https://openapi.alipaydev.com/gateway.do?' + order_string
-        print(pay_url)
+        print(order_id)
+        # 定义支付引导界面,并返回给浏览器
+        pay_url = 'https://openapi.alipaydev.com/gateway.do?' + order_str
         return JsonResponse({'code': 0, 'pay_url': pay_url})
 
 

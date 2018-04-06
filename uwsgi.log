@@ -226,3 +226,213 @@ https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B
 缓存不为空，从缓存中读取
 [pid: 113088|app: 0|req: 9/12] 127.0.0.1 () {42 vars in 788 bytes} [Thu Apr  5 20:31:17 2018] GET /index => generated 16528 bytes in 273 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
 [pid: 113088|app: 0|req: 10/13] 127.0.0.1 () {40 vars in 694 bytes} [Thu Apr  5 20:31:18 2018] GET /js/slideshow.js => generated 89 bytes in 3 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113085|app: 0|req: 1/14] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 08:04:12 2018] GET /users/order/1 => generated 7273 bytes in 5982 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 2/15] 127.0.0.1 () {44 vars in 827 bytes} [Fri Apr  6 08:04:58 2018] GET /users/order/1 => generated 7273 bytes in 140 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 11/16] 127.0.0.1 () {42 vars in 726 bytes} [Fri Apr  6 08:05:15 2018] GET /users/order/1 => generated 0 bytes in 1101 msecs (HTTP/1.1 302) 4 headers in 165 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 4/17] 127.0.0.1 () {42 vars in 761 bytes} [Fri Apr  6 08:05:16 2018] GET /users/login?next=/users/order/1 => generated 2119 bytes in 930 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+admin
+[pid: 113083|app: 0|req: 1/18] 127.0.0.1 () {50 vars in 984 bytes} [Fri Apr  6 08:05:25 2018] POST /users/login?next=/users/order/1 => generated 0 bytes in 1834 msecs (HTTP/1.1 302) 6 headers in 344 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 12/19] 127.0.0.1 () {44 vars in 853 bytes} [Fri Apr  6 08:05:27 2018] GET /users/order/1 => generated 7273 bytes in 1186 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051542441%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%2294.00%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+08%3A05%3A36&version=1.0&sign=nUl%2FoEioYnifjeZiodcQVwbrh1I53GK3MeTyTKgrpjWiCV2kfcEgrhPWCyetJRCfliTDcJfXM3RpvosGjFs%2F%2F1lXzxnjLZu4kDlGYzKsx4t8fBZlO1YYcTIYMYBs%2BNDfidvp8iknC5wys5UBXYhDp7PH%2FyMHIiRKZMcX%2BCDzLEv3%2BpN4lyvzfMfrIV1%2BMwpcViNWerYbKdjk436sCMtFh0mD5FvGMfD0ADl8YpRUkQMo3cfySdCmjlqZGdiJkb%2FGU%2BJsS4sT9fHPGSdiTfuRjwU%2BB%2B7xG2bcOuCaWVcoQSVUn10YATZ3roZZ24OZgqgZgaYvlcSGROeiTXTUPGxkNw%3D%3D
+[pid: 113088|app: 0|req: 13/20] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 08:05:36 2018] POST /orders/pay => generated 815 bytes in 347 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 14/21] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 08:05:36 2018] POST /orders/check => generated 27 bytes in 881 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 5/22] 127.0.0.1 () {44 vars in 853 bytes} [Fri Apr  6 08:07:45 2018] GET /users/order/1 => generated 7273 bytes in 1097 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051514291%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22186.60%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+08%3A07%3A48&version=1.0&sign=uB8kscm0c0ia7VpvMwnqwo9DfV0BcONb5G8NzDG%2BA5w5X29JA2iB6r%2FkiZ%2BR4Zr6tI0KWmLaVtLr07VUJWKBfixsY26Hx6pz000fxk4KajX1DhFuARdV0kTh9ib%2FsTqEA0h6qYkixoopfvRZaFkKLZ0gZoZzmqD2T5r6VXLCSRSbbb7aZVeWpH6CVa5XG8FSe%2FhV6a8KivrJ%2BPr2IjNBoo2J%2B5WqGOUFNRT4tmXFQ%2FRJhvY5SF8UUfZ%2FCS%2B0HSgEv3M06O7X%2FNftCc%2FJ16mlZebGh832R1GLZbjFBimpbzTsW5wD1YNkojovEX3pHbOfO7F6gf9oCIuffTtuwwBUEQ%3D%3D
+[pid: 113088|app: 0|req: 15/23] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 08:07:48 2018] POST /orders/pay => generated 816 bytes in 147 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 6/24] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 08:07:48 2018] POST /orders/check => generated 27 bytes in 1205 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+缓存为空，数据将从mysql查找
+[pid: 113085|app: 0|req: 3/25] 127.0.0.1 () {42 vars in 788 bytes} [Fri Apr  6 08:32:35 2018] GET /index => generated 16528 bytes in 2740 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 4/26] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 08:32:38 2018] GET /js/slideshow.js => generated 89 bytes in 137 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 7/27] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 08:32:47 2018] GET /users/order/1 => generated 7273 bytes in 744 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113083|app: 0|req: 2/28] 127.0.0.1 () {42 vars in 788 bytes} [Fri Apr  6 08:34:26 2018] GET /index => generated 16528 bytes in 3505 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 16/29] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 08:34:31 2018] GET /js/slideshow.js => generated 89 bytes in 785 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 17/30] 127.0.0.1 () {42 vars in 786 bytes} [Fri Apr  6 08:34:35 2018] GET /detail/9 => generated 8444 bytes in 1233 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 18/31] 127.0.0.1 () {48 vars in 892 bytes} [Fri Apr  6 08:34:39 2018] POST /cart/add => generated 28 bytes in 43 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 19/32] 127.0.0.1 () {42 vars in 783 bytes} [Fri Apr  6 08:34:43 2018] GET /cart/ => generated 12492 bytes in 98 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 20/33] 127.0.0.1 () {50 vars in 965 bytes} [Fri Apr  6 08:34:46 2018] POST /orders/place => generated 6054 bytes in 145 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 1.961 seconds.
+Prefix dict has been built succesfully.
+[pid: 113088|app: 0|req: 21/34] 127.0.0.1 () {48 vars in 906 bytes} [Fri Apr  6 08:34:56 2018] POST /orders/commit => generated 62 bytes in 2882 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 22/35] 127.0.0.1 () {42 vars in 803 bytes} [Fri Apr  6 08:35:02 2018] GET /users/order/1 => generated 6999 bytes in 107 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+08%3A35%3A06&version=1.0&sign=PEM1JqZkKQnqFZnt8Ojfxm9sPJLIzpqdwyxAmLJbuC646iJ4eC%2F2KgHxXupEZFkR27ZQ3XzA7vp9s7Q1h8UTe3A7ATE1D8E4AcBvLXqPnUdopcEnBpjVbcfZlQrr0SVPzn5NkBH9DYxbIsxWv3XylORPEq0%2Fv%2B8iSZtFU%2Fr4odsq8FbVxsZZ%2F06pvVeQn9sN5o3S84bro8NXS5lLfdX0ohhzKo8j4QUt0XeMw0OVUUVgYZDjmS1svG6oVxfNdGHafmA%2Fm204dc2L4KDshgQNaP102XupUlBFxZAcGNVOG4nr3011cBfFZQEFRkmLnBII8GhkhF5h9RYuMV8Uv0yXOg%3D%3D
+[pid: 113088|app: 0|req: 23/36] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 08:35:06 2018] POST /orders/pay => generated 804 bytes in 157 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 24/37] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 08:35:06 2018] POST /orders/check => generated 27 bytes in 895 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 25/38] 127.0.0.1 () {44 vars in 834 bytes} [Fri Apr  6 08:43:37 2018] GET /users/order/1 => generated 6999 bytes in 399 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+08%3A43%3A41&version=1.0&sign=54IkHUIMRpemigjibTVYsXGQ3MQKp9SPUgu0y8EC9I9jgXNVgNa6%2Bu8cdZr128Fsm9masa0yo%2F%2FX31SCI9WS8CSysbOMx0h4FGJlHGcDfG6wvHfdmHzOVxak%2FLWJxkiGkHDUcE6J98VS5SN1r%2BUW72NRRsKJI3WvtifmocOF5A4v9NeXc%2BL%2BXVQe5c%2Bzgo2ux85gy1Cyskg1RxUAaBVaLnx%2FDZgBaSEYVgcYuVYK0c0oV2W9ch%2BIPifeEKcKFbKIhJdMkBnLy3fpe4inToc0VQzLR%2B8WSQY5OPD5aAmGyUxEu9LQv0BB23w3kCegYaTVwC7JgBa8XqGPxGkf42iC1g%3D%3D
+[pid: 113088|app: 0|req: 26/39] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 08:43:41 2018] POST /orders/pay => generated 814 bytes in 164 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 27/40] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 08:43:41 2018] POST /orders/check => generated 27 bytes in 512 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113083|app: 0|req: 3/41] 127.0.0.1 () {40 vars in 610 bytes} [Fri Apr  6 09:12:12 2018] GET /js/slideshow.js => generated 89 bytes in 3968 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113083|app: 0|req: 4/42] 127.0.0.1 () {38 vars in 629 bytes} [Fri Apr  6 09:12:16 2018] GET /favicon.ico => generated 85 bytes in 27 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 28/43] 127.0.0.1 () {38 vars in 569 bytes} [Fri Apr  6 09:12:16 2018] GET /favicon.ico => generated 85 bytes in 544 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 29/44] 127.0.0.1 () {42 vars in 697 bytes} [Fri Apr  6 09:12:18 2018] GET /users/login => generated 2119 bytes in 845 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+admin
+[pid: 113088|app: 0|req: 30/45] 127.0.0.1 () {46 vars in 823 bytes} [Fri Apr  6 09:12:32 2018] POST /users/login => generated 0 bytes in 901 msecs (HTTP/1.1 302) 6 headers in 336 bytes (1 switches on core 0)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 31/46] 127.0.0.1 () {42 vars in 740 bytes} [Fri Apr  6 09:12:33 2018] GET /index => generated 16528 bytes in 642 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 32/47] 127.0.0.1 () {40 vars in 659 bytes} [Fri Apr  6 09:12:33 2018] GET /js/slideshow.js => generated 89 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 8/48] 127.0.0.1 () {40 vars in 659 bytes} [Fri Apr  6 09:12:34 2018] GET /js/slideshow.js => generated 89 bytes in 624 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 33/49] 127.0.0.1 () {42 vars in 750 bytes} [Fri Apr  6 09:12:36 2018] GET /users/order/1 => generated 6999 bytes in 196 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+09%3A12%3A39&version=1.0&sign=qb097Cxxy3Kp6ikE%2F%2FP5rtbEmeTEiz3QjKLK3prV94gWsLDLoBJhiziUMOKk01gE7z2LFy2NfTMOSjPjUC8EmWVNcVfHLDrOC%2B2zZWezVQrW%2FrVAzXbOmNMIlkSEGhn8cnF5Tjg6jxedVkV8oCZ4ItDYW8R0KA7aU16PyptEqyae%2B%2BuSxIDTf4B42EN8jCF5kmMtUKd6WssZfLraDQPPW2l7mtAzR16sFtoYcWjMD5Gt6aGct5VRrISJ6oElrpGNiiQ4Uyd3wzzxQNDO9HUt0A0ap5sqNpeIH5a3oDtg9f7hSKAzc2UqXWF517dYfRQdZkMBGV2zbDoQeCJ2v5%2FaLg%3D%3D
+[pid: 113084|app: 0|req: 9/50] 127.0.0.1 () {46 vars in 841 bytes} [Fri Apr  6 09:12:38 2018] POST /orders/pay => generated 806 bytes in 627 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 34/51] 127.0.0.1 () {46 vars in 845 bytes} [Fri Apr  6 09:12:39 2018] POST /orders/check => generated 27 bytes in 864 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 5/52] 127.0.0.1 () {40 vars in 689 bytes} [Fri Apr  6 10:04:46 2018] GET /js/slideshow.js => generated 89 bytes in 840 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 6/53] 127.0.0.1 () {42 vars in 787 bytes} [Fri Apr  6 10:04:50 2018] GET /users/login => generated 2119 bytes in 260 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+admin
+[pid: 113084|app: 0|req: 10/54] 127.0.0.1 () {50 vars in 969 bytes} [Fri Apr  6 10:04:59 2018] POST /users/login => generated 0 bytes in 1089 msecs (HTTP/1.1 302) 6 headers in 392 bytes (1 switches on core 1)
+缓存为空，数据将从mysql查找
+[pid: 113083|app: 0|req: 5/55] 127.0.0.1 () {44 vars in 817 bytes} [Fri Apr  6 10:05:00 2018] GET /index => generated 16528 bytes in 1210 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 35/56] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 10:05:02 2018] GET /js/slideshow.js => generated 89 bytes in 337 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 36/57] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 10:05:09 2018] GET /users/order/1 => generated 6999 bytes in 264 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+10%3A05%3A13&version=1.0&sign=nvK3e9Z6yVJFLxHWlQZMFxC2uH4nhunS%2BdZaliz%2BwDcApvfYjr0IvXh9uOyEiw0Ie1u%2B7ZUNRdg7W058geIiLYHctXNIdjNIvJvHMphsuDSFi0FazK0psxaEyPYtYXW7mjwwdozBQE5YyzcIhn%2BjUCW5ApNenAyuKZwBcKqgKaieWUsYnkegoBk3DUBXrcrBn75VSfGvy8Ka0dpFAsOwGV6YFfMji%2BBGz4%2BYa4g%2F51S7lSTkB6N5cqBZuNDoipFikHQMyZx8lMLQ6YpGK2dhTduNx8aQWFhOpMwQIGp%2FHcULSnWamvJvxnIedrPxlD1WTqNOXoQAvNXkP9LMOM0I5g%3D%3D
+[pid: 113088|app: 0|req: 37/58] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 10:05:13 2018] POST /orders/pay => generated 808 bytes in 148 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 38/59] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 10:05:13 2018] POST /orders/check => generated 27 bytes in 564 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113085|app: 0|req: 7/60] 127.0.0.1 () {40 vars in 689 bytes} [Fri Apr  6 10:28:59 2018] GET /js/slideshow.js => generated 89 bytes in 159 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 8/61] 127.0.0.1 () {42 vars in 787 bytes} [Fri Apr  6 10:29:01 2018] GET /users/login => generated 2119 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+admin
+[pid: 113088|app: 0|req: 40/62] 127.0.0.1 () {50 vars in 969 bytes} [Fri Apr  6 10:29:03 2018] POST /users/login => generated 0 bytes in 295 msecs (HTTP/1.1 302) 6 headers in 336 bytes (1 switches on core 0)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 40/63] 127.0.0.1 () {44 vars in 817 bytes} [Fri Apr  6 10:29:03 2018] GET /index => generated 16528 bytes in 307 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 41/64] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 10:29:04 2018] GET /js/slideshow.js => generated 89 bytes in 2 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 11/65] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 10:29:06 2018] GET /users/order/1 => generated 6999 bytes in 452 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+10%3A29%3A08&version=1.0&sign=kAw6u91c81BqkWBJvsbSzBMSM2Dm26t%2BFCAqgn9KTqS8wJcV9TEDL%2BhjUSStBHN5Fru97Y2zj3%2B%2BzpTSb1T5TVkvHjpITtqjki%2FB3zogUYvbKgIALwFWHx6m9Htqhur%2FM4ykuJmfcTuhTmdRD71Vf3EXH5N%2F1GMFkOh5wJmI%2Fc8kCB4A7vsU9uM3Ce9hrxEDqUAQLKLclSCGrdWVWLo7fn7KdiHtzzaA1trWOakkj%2FBIplBQLKR%2FqaVoFkfr3w5pFEIpOsj5JRiE8dXGgRmU1CYG6U2Kr0IKVXMBHo%2FWq0LWslBTPZktNb7s3gceYnzYVf3CO%2F1H4NspH1DHQiPf4A%3D%3D
+[pid: 113088|app: 0|req: 42/66] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 10:29:08 2018] POST /orders/pay => generated 816 bytes in 139 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 12/67] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 10:29:08 2018] POST /orders/check => generated 27 bytes in 846 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051542441%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%2294.00%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+10%3A49%3A20&version=1.0&sign=tNqH6HEP9zgw6RgnKXlJ%2BvqUzvvEYtRQU1oW7TVtoSyLWmJmj9IE2hj1oCRkXOujPfttc%2B2dI47R9%2FMiEXx6UY7%2Bk6lYrVTS7pChA6U6dM2VejlOVR6vxL2IOM1VSzUkrVyoyn18Y6soxsURAWuzDcO5ixnHwY4e1jvXxQlhRJfx%2F6jn6tQZhbhrazj3c2Ta37eHSbEz1XNZyMwM2TrQSxfqeJZBXM8mdbP0ZVe443jSfk%2Faf56YW5CTfhF4ijfZ3CSLZjtQXP5BnMAhSnXX6aO0kUuvHSNFzT%2By1Bx0CiO8RBhIHqN4WT2X9Qgf91tBqZgC35ph26Cj4GDR6TMQdw%3D%3D
+[pid: 113083|app: 0|req: 6/68] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 10:49:19 2018] POST /orders/pay => generated 805 bytes in 1546 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 9/69] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 10:49:21 2018] POST /orders/check => generated 27 bytes in 2638 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 43/70] 127.0.0.1 () {42 vars in 804 bytes} [Fri Apr  6 10:51:21 2018] GET /users/order/2 => generated 5899 bytes in 1595 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 13/71] 127.0.0.1 () {42 vars in 804 bytes} [Fri Apr  6 10:51:25 2018] GET /users/order/1 => generated 6999 bytes in 1376 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113083|app: 0|req: 7/72] 127.0.0.1 () {42 vars in 804 bytes} [Fri Apr  6 10:51:35 2018] GET /users/order/1 => generated 6999 bytes in 643 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113085|app: 0|req: 10/73] 127.0.0.1 () {44 vars in 835 bytes} [Fri Apr  6 11:30:30 2018] GET /users/order/1 => generated 6999 bytes in 1132 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[b'9', b'4', b'1']
+[pid: 113085|app: 0|req: 11/74] 127.0.0.1 () {42 vars in 790 bytes} [Fri Apr  6 11:41:50 2018] GET /users/ => generated 4885 bytes in 167 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 44/75] 127.0.0.1 () {42 vars in 797 bytes} [Fri Apr  6 11:41:53 2018] GET /users/order/1 => generated 6999 bytes in 345 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+111
+赵云
+[pid: 113088|app: 0|req: 45/76] 127.0.0.1 () {42 vars in 804 bytes} [Fri Apr  6 11:41:55 2018] GET /users/address => generated 3597 bytes in 90 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[b'9', b'4', b'1']
+[pid: 113088|app: 0|req: 46/77] 127.0.0.1 () {42 vars in 790 bytes} [Fri Apr  6 11:42:00 2018] GET /users/ => generated 4885 bytes in 80 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 47/78] 127.0.0.1 () {42 vars in 797 bytes} [Fri Apr  6 11:42:10 2018] GET /users/order/1 => generated 6999 bytes in 95 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+111
+赵云
+[pid: 113088|app: 0|req: 48/79] 127.0.0.1 () {42 vars in 804 bytes} [Fri Apr  6 11:42:11 2018] GET /users/address => generated 3597 bytes in 45 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 49/80] 127.0.0.1 () {42 vars in 788 bytes} [Fri Apr  6 11:42:13 2018] GET /cart/ => generated 11578 bytes in 49 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 50/81] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 11:42:15 2018] GET /users/order/1 => generated 6999 bytes in 153 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[b'9', b'4', b'1']
+[pid: 113088|app: 0|req: 51/82] 127.0.0.1 () {42 vars in 790 bytes} [Fri Apr  6 11:42:17 2018] GET /users/ => generated 4885 bytes in 59 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 52/83] 127.0.0.1 () {42 vars in 824 bytes} [Fri Apr  6 11:42:29 2018] GET /search?q=%E8%8D%89%E8%8E%93 => generated 0 bytes in 17 msecs (HTTP/1.1 301) 3 headers in 160 bytes (1 switches on core 0)
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 3.145 seconds.
+Prefix dict has been built succesfully.
+[pid: 113084|app: 0|req: 14/84] 127.0.0.1 () {42 vars in 826 bytes} [Fri Apr  6 11:42:29 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 4931 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+缓存为空，数据将从mysql查找
+[pid: 113088|app: 0|req: 53/85] 127.0.0.1 () {42 vars in 781 bytes} [Fri Apr  6 11:42:40 2018] GET /index => generated 16528 bytes in 396 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 15/86] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 11:42:41 2018] GET /js/slideshow.js => generated 89 bytes in 3 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 3.011 seconds.
+Prefix dict has been built succesfully.
+[pid: 113085|app: 0|req: 12/87] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:42:49 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 4124 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 13/88] 127.0.0.1 () {42 vars in 780 bytes} [Fri Apr  6 11:43:00 2018] GET /cart/ => generated 11578 bytes in 40 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 54/89] 127.0.0.1 () {42 vars in 780 bytes} [Fri Apr  6 11:43:03 2018] GET /index => generated 16528 bytes in 254 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 55/90] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 11:43:03 2018] GET /js/slideshow.js => generated 89 bytes in 24 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113084|app: 0|req: 16/91] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:45:37 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 6992 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 17/92] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:48:35 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 123 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 56/93] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:50:46 2018] GET /search/?q=%E8%91%A1%E8%90%84 => generated 27 bytes in 1043 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 3.088 seconds.
+Prefix dict has been built succesfully.
+[pid: 113083|app: 0|req: 8/94] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:56:47 2018] GET /search/?q=%E8%91%A1%E8%90%84 => generated 27 bytes in 6190 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+[pid: 113084|app: 0|req: 18/95] 127.0.0.1 () {44 vars in 856 bytes} [Fri Apr  6 11:58:05 2018] GET /search/?q=%E8%91%A1%E8%90%84 => generated 27 bytes in 1103 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113083|app: 0|req: 9/96] 127.0.0.1 () {44 vars in 811 bytes} [Fri Apr  6 11:58:21 2018] GET /index => generated 16528 bytes in 521 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 57/97] 127.0.0.1 () {42 vars in 725 bytes} [Fri Apr  6 11:58:22 2018] GET /js/slideshow.js => generated 89 bytes in 300 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 58/98] 127.0.0.1 () {42 vars in 825 bytes} [Fri Apr  6 11:58:30 2018] GET /search/?q=%E6%9F%A0%E6%AA%AC => generated 27 bytes in 538 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[b'9', b'4', b'1']
+[pid: 113083|app: 0|req: 10/99] 127.0.0.1 () {42 vars in 782 bytes} [Fri Apr  6 12:01:47 2018] GET /users/ => generated 4885 bytes in 352 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113083|app: 0|req: 11/100] 127.0.0.1 () {42 vars in 826 bytes} [Fri Apr  6 12:01:52 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 77 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 59/101] 127.0.0.1 () {42 vars in 787 bytes} [Fri Apr  6 12:03:00 2018] GET /detail/9 => generated 8444 bytes in 228 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 60/102] 127.0.0.1 () {42 vars in 828 bytes} [Fri Apr  6 12:03:08 2018] GET /search/?q=%E8%8D%89%E8%8E%93 => generated 27 bytes in 66 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 61/103] 127.0.0.1 () {42 vars in 783 bytes} [Fri Apr  6 12:03:26 2018] GET /index => generated 16528 bytes in 303 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 62/104] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 12:03:27 2018] GET /js/slideshow.js => generated 89 bytes in 1 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113083|app: 0|req: 12/105] 127.0.0.1 () {42 vars in 786 bytes} [Fri Apr  6 12:03:30 2018] GET /detail/1 => generated 9526 bytes in 123 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 63/106] 127.0.0.1 () {42 vars in 789 bytes} [Fri Apr  6 12:03:40 2018] GET /detail/2 => generated 9381 bytes in 75 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113083|app: 0|req: 13/107] 127.0.0.1 () {42 vars in 791 bytes} [Fri Apr  6 12:03:42 2018] GET /detail/33 => generated 9381 bytes in 99 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 64/108] 127.0.0.1 () {42 vars in 800 bytes} [Fri Apr  6 12:08:24 2018] GET /users/order/1 => generated 6999 bytes in 118 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+12%3A08%3A26&version=1.0&sign=H3whiafhb4HBDEiksymSvgY%2BeqAIs7p6yo%2BmDMb%2FEfOxciA6NE5R5iita3ucO8jxE9IKPShdbHcl0zItl%2Fizc7RHDpKoBUgCBfYf4DhJHrT51cjTwFtzDMFyF6B1YC5Vu%2FksqiKWtANCvchnYiJF4V4l0it2hxt9XGZ6wOTWUI7TH80wF%2Bx%2B4aQ%2FEg5oNBeIMqPn9aGkjlNTZ7OO1F1JC1T9rAv3AAsVoLjp44SdeX4TLum3R9YdNHnBmPBv3lfo187NcXU9USppX57G%2FsVv5jqMO%2FjDPT1GkBJKBrIYNLHbuBG08FHqbc0iSwWPzEVmYBKvX3BAdsvQG5m%2FV9%2BsSw%3D%3D
+[pid: 113088|app: 0|req: 65/109] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 12:08:26 2018] POST /orders/pay => generated 816 bytes in 203 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 66/110] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 12:08:27 2018] POST /orders/check => generated 27 bytes in 627 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804060834561%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%22110.90%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+12%3A08%3A46&version=1.0&sign=Blraw%2BfmUpoPWSP2ghcQYkb9Ozbkh2QqZqXG6lAhqqW0asxDPhmZOwXuS3v9vpLqFYM2k97ieEIm0KBZWO4lb2kmOp95zb1m5FpgPcvoUew1lRyQAfSSYdiS%2F%2Fo3g%2ByP06IjtMIN4xYMC5xtjwQGIH4fDUZwgCXZB0CWsKX3Msjux3sGD%2FM38fObEoqONzqT%2FnymvMJq1KXP0%2Fac3SNPtvnA8JQV6NToJoyXR61tE8xuzxD0G0YaCNJ%2Fekw3sfhcE2oyZUjbJhlL1gYYFrd9Bh7a%2FFe2JfKO7d5CNALrZrp7nPBrlwI3Ov%2FCPv1ELsUmsz0e9JZeBLpLyOF6VxIaBw%3D%3D
+[pid: 113088|app: 0|req: 67/111] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 12:08:46 2018] POST /orders/pay => generated 812 bytes in 101 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 68/112] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 12:08:46 2018] POST /orders/check => generated 27 bytes in 406 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804051542441%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%2294.00%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+12%3A10%3A37&version=1.0&sign=va1WcfPEW0w69rJREe6xdXsbNEhznyBnj9YD%2FxIeRZVPBb2QTLC2qIx4sAUD4OyuYC7a6gDW%2FegauPpQDIN3uhsmPidK1ud8MmlB1d5WnVO8XDXUer1r76xidjzTcUKqRUCOqasbgHmQouaDy728ewabtWybh1xOXoVeg2BugxCxxdJ852vmcno0QSiIbn%2B8iJGRBAUKs2n1IhZtqeZmXxtw4bqUi4SmnIkq2W2ABThJIQqDDHCjEj9%2B1jv9AxpzZa3T9BP0Jcd6paw39osXQ38Kg8H0I1sbgzu2yqfz%2BetcZrmlj532hogvQau6CyKxQhr7p8v%2BqCFdMdnKwpW3bg%3D%3D
+[pid: 113083|app: 0|req: 14/113] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 12:10:37 2018] POST /orders/pay => generated 803 bytes in 306 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 69/114] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 12:10:37 2018] POST /orders/check => generated 27 bytes in 541 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 1)
+[pid: 113083|app: 0|req: 15/115] 127.0.0.1 () {44 vars in 831 bytes} [Fri Apr  6 12:11:03 2018] GET /users/order/1 => generated 6999 bytes in 98 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+缓存不为空，从缓存中读取
+[pid: 113088|app: 0|req: 70/116] 127.0.0.1 () {42 vars in 788 bytes} [Fri Apr  6 12:11:08 2018] GET /index => generated 16528 bytes in 184 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 71/117] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 12:11:08 2018] GET /js/slideshow.js => generated 89 bytes in 1 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 113085|app: 0|req: 14/118] 127.0.0.1 () {42 vars in 786 bytes} [Fri Apr  6 12:11:11 2018] GET /detail/1 => generated 9526 bytes in 1390 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113085|app: 0|req: 15/119] 127.0.0.1 () {48 vars in 892 bytes} [Fri Apr  6 12:11:15 2018] POST /cart/add => generated 28 bytes in 35 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 72/120] 127.0.0.1 () {42 vars in 783 bytes} [Fri Apr  6 12:11:20 2018] GET /cart/ => generated 12501 bytes in 20 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 73/121] 127.0.0.1 () {50 vars in 965 bytes} [Fri Apr  6 12:11:21 2018] POST /orders/place => generated 6064 bytes in 62 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 113088|app: 0|req: 74/122] 127.0.0.1 () {48 vars in 906 bytes} [Fri Apr  6 12:11:28 2018] POST /orders/commit => generated 62 bytes in 441 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 75/123] 127.0.0.1 () {42 vars in 803 bytes} [Fri Apr  6 12:11:32 2018] GET /users/order/1 => generated 6607 bytes in 58 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+https://openapi.alipaydev.com/gateway.do?app_id=2016091000481374&biz_content=%7B%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22out_trade_no%22%3A%22201804061211281%22%2C%22subject%22%3A%22%5Cu751f%5Cu9c9c%5Cu6d4b%5Cu8bd5%5Cu8ba2%5Cu5355%22%2C%22return_url%22%3Anull%2C%22total_amount%22%3A%2220.00%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2018-04-06+12%3A11%3A35&version=1.0&sign=h3iDzqFCJuG4g%2BovysmbDTA9njEkG%2FbIcf9GcVuMDL6J9gYrQiM5n57MIBgUTfUuMAazYvgF2kvDcHkPxJKhUUaxkYDxQLaGTvY28x5lsv3xk1IXipKzT6bcfON1C9JlXGnr5w2rVuj8EGa3b1Wm0OxtPPDJ%2BwaXRIfnrwAcXLnbC1QzrHlS6FAwXG9Y%2FqQokSzDM%2Fue2wbmWNd%2BU1afdL0g8kFiM3Z1eyDdxUzyBlzm2SR2iOfG%2B%2Frq5Q9RROF5Cxpkjs355IsKGD7zzz79yZ8pd3a1RtiKlBog%2BHZxxXiEruMql2uwhQKKaEcosmcy3qZ3dK7adDoybJrq3I3dHA%3D%3D
+[pid: 113088|app: 0|req: 76/124] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 12:11:35 2018] POST /orders/pay => generated 809 bytes in 103 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 113088|app: 0|req: 77/125] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 12:11:35 2018] POST /orders/check => generated 27 bytes in 2412 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Fri Apr  6 14:07:37 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 11807
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8080 fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x1547490
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1547490 pid: 126295 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 126295)
+spawned uWSGI worker 1 (pid: 126302, cores: 2)
+spawned uWSGI worker 2 (pid: 126303, cores: 2)
+spawned uWSGI worker 3 (pid: 126304, cores: 2)
+spawned uWSGI worker 4 (pid: 126305, cores: 2)
+[pid: 126304|app: 0|req: 1/1] 127.0.0.1 () {40 vars in 645 bytes} [Fri Apr  6 14:08:18 2018] GET /js/slideshow.js => generated 89 bytes in 1110 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 126304|app: 0|req: 2/2] 127.0.0.1 () {40 vars in 637 bytes} [Fri Apr  6 14:08:19 2018] GET /favicon.ico => generated 85 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 126305|app: 0|req: 1/3] 127.0.0.1 () {42 vars in 743 bytes} [Fri Apr  6 14:08:21 2018] GET /users/login => generated 2119 bytes in 760 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+admin
+[pid: 126304|app: 0|req: 3/4] 127.0.0.1 () {50 vars in 925 bytes} [Fri Apr  6 14:08:24 2018] POST /users/login => generated 0 bytes in 257 msecs (HTTP/1.1 302) 6 headers in 336 bytes (1 switches on core 1)
+缓存为空，数据将从mysql查找
+[pid: 126305|app: 0|req: 2/5] 127.0.0.1 () {44 vars in 817 bytes} [Fri Apr  6 14:08:25 2018] GET /index => generated 16528 bytes in 771 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 126302|app: 0|req: 1/6] 127.0.0.1 () {40 vars in 694 bytes} [Fri Apr  6 14:08:26 2018] GET /js/slideshow.js => generated 89 bytes in 657 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 126302|app: 0|req: 2/7] 127.0.0.1 () {42 vars in 796 bytes} [Fri Apr  6 14:08:27 2018] GET /users/order/1 => generated 6577 bytes in 292 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 126302|app: 0|req: 3/8] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 14:08:31 2018] POST /orders/pay => generated 50 bytes in 23 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 126302|app: 0|req: 4/9] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 14:08:31 2018] POST /orders/check => generated 64 bytes in 13 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 126304|app: 0|req: 4/10] 127.0.0.1 () {44 vars in 827 bytes} [Fri Apr  6 14:09:27 2018] GET /users/order/1 => generated 6607 bytes in 334 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+201804061211281
+[pid: 126304|app: 0|req: 5/11] 127.0.0.1 () {48 vars in 901 bytes} [Fri Apr  6 14:09:29 2018] POST /orders/pay => generated 809 bytes in 122 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 1)
+[pid: 126302|app: 0|req: 5/12] 127.0.0.1 () {48 vars in 905 bytes} [Fri Apr  6 14:09:29 2018] POST /orders/check => generated 27 bytes in 610 msecs (HTTP/1.1 500) 3 headers in 106 bytes (1 switches on core 0)

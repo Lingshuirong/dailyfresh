@@ -3,7 +3,7 @@ from haystack import indexes
 from apps.goods.models import GoodsSKU
 
 
-class GoodsSKUIndex(indexes.SearchIndex,indexes.Indexable):
+class GoodsSKUIndex(indexes.SearchIndex, indexes.Indexable):
     """模型索引类：针对那张表的那些数据创建索引"""
     text = indexes.CharField(document=True, use_template=True)
 
