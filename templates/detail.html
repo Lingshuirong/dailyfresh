@@ -61,7 +61,7 @@
 				<span></span>			
 				<ul class="subnav">
                     {% for category in categories %}
-                        <li><a href="#" class="{{ category.logo }}">{{ category.name }}</a></li>
+                        <li><a href="{% url 'goods:list' category.id 1 %}" class="{{ category.logo }}">{{ category.name }}</a></li>
                     {% endfor %}
 
 				</ul>
@@ -263,6 +263,26 @@
                     alert(result.errmsg);
                 }
             });
+
+        // 点击购买跳转
+        $('.buy_btn').click(function () {
+            // 点击购买时，跳转到付款界面
+            var sku_id = $(this).attr('sku_id');
+            var count = $('.num_show').val();
+            var token = $('input[name="csrfmiddlewaretoken"]').val();
+
+            // 定义post请求参数
+            var params = {
+                'sku_id': sku_id,
+                'count': count,
+                'csrfmiddlewaretoken': token,
+            };
+            
+            // 发起post请求，跳转到/orders/place页面
+            $.post('/order/place', params , function () {
+                
+            })
+            })
         });
 
         {% comment %}
