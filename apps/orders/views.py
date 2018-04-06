@@ -258,69 +258,92 @@ class OrderPayView(View):
             out_trade_no=order_id,
             total_amount=str(total_pay)  # 需要使用str类型, 不能使用浮点型
         )
-        print(order_id)
         # 定义支付引导界面,并返回给浏览器
         pay_url = 'https://openapi.alipaydev.com/gateway.do?' + order_str
         return JsonResponse({'code': 0, 'pay_url': pay_url})
 
 
 class CheckPayView(View):
-
     def post(self, request):
-        """订单支付结果查询"""
 
         if not request.user.is_authenticated():
-            return JsonResponse({'code': 1, 'message': '请先登录'})
+            return JsonResponse({'code': 1, 'message': '用户未登录'})
 
+        # 获取订单id
         order_id = request.POST.get('order_id')
-        if not order_id:
-            return JsonResponse({'code': 2, 'message': '订单id不能为空'})
 
-        # 查询订单是否存在
+        # 判断订单是否有效(未支付)
         try:
             order = OrderInfo.objects.get(order_id=order_id,
-                                          status=1,
                                           user=request.user)
         except OrderInfo.DoesNotExist:
-            return JsonResponse({'code': 3, 'message': '订单无效'})
+            return JsonResponse({'code': 2, 'message': '无效订单'})
 
-        # 通过第三方sdk，调用支付宝接口，实现订单支付功能
-        # 1.初始化
+        if not order_id:
+            return JsonResponse({'code': 3, 'message': '订单id不能为空'})
+
+        # 调用 第三方sdk, 实现支付功能
+        # (1) 初始化sdk
         from alipay import AliPay
-        app_private_key_string = open('apps/orders/app_private_key.pem').read()
-        alipay_public_key_string = open('apps/orders/alipay_public_key.pem').read()
+        app_private_key_string = open("apps/orders/app_private_key.pem").read()
+        alipay_public_key_string = open("apps/orders/alipay_public_key.pem").read()
 
         alipay = AliPay(
-            appid='2016091000481374',
-            app_notify_url=None,
+            appid="2016091000481374",  # 沙箱应用
+            app_notify_url=None,  # 默认回调url
             app_private_key_string=app_private_key_string,
-            alipay_public_key_string=alipay_public_key_string,
-            sign_type='RSA2',
-            debug=True
+            alipay_public_key_string=alipay_public_key_string,  # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            sign_type="RSA2",  # RSA 或者 RSA2  # 不要使用rsa
+            debug=True  # 默认False  True: 表示使用测试环境(沙箱环境)
         )
 
-        # 判断订单是否支付成功
-        while(True):
-            response = alipay.api_alipay_trade_query(out_trade_no=order_id)
-            code = response.get('code') # 响应状态码
-            trade_no = response.get('trade_no') # 支付交易号
-            trade_status = response.get('trade_status')  # 订单支付状态
+        # 调用第三方sdk查询订单支付结果
+        '''
+         {
+            "trade_no": "2017032121001004070200176844",
+            "code": "10000",
+            "invoice_amount": "20.00",
+            "open_id": "20880072506750308812798160715407",
+            "fund_bill_list": [
+              {
+                "amount": "20.00",
+                "fund_channel": "ALIPAYACCOUNT"
+              }
+            ],
+            "buyer_logon_id": "csq***@sandbox.com",
+            "send_pay_date": "2017-03-21 13:29:17",
+            "receipt_amount": "20.00",
+            "out_trade_no": "out_trade_no15",
+            "buyer_pay_amount": "20.00",
+            "buyer_user_id": "2088102169481075",
+            "msg": "Success",
+            "point_amount": "0.00",
+            "trade_status": "TRADE_SUCCESS",
+            "total_amount": "20.00"
+          },
+        '''
+        while True:
+            result_dict = alipay.api_alipay_trade_query(out_trade_no=order_id)
+            code = result_dict.get('code')
+            trade_status = result_dict.get('trade_status')
+            trade_no = result_dict.get('trade_no')
 
+            # 10000: 接口调用成功
             if code == '10000' and trade_status == 'TRADE_SUCCESS':
-                # 修改订单状态
-                order.status = 4
+                # 支付成功
+                order.status = 4  # 待评价
                 order.trade_no = trade_no
-                order.save()
-                return JsonResponse({'code': 0, 'message': '订单支付成功'})
-            elif code == '40004' or (code == '10000' and trade_status == 'WAIT_BUYER_PAY'):
-                sleep()
+                order.save()  # 修改订单信息表
+                return JsonResponse({'code': 0, 'message': '支付成功'})
+            elif (code == '10000' and trade_status == 'WAIT_BUYER_PAY') or code == '40004':
+                # 等待买家付款
+                # 40004: 支付暂时失败, 过一会可以成功
+                sleep(2)
                 print(code)
                 continue
             else:
-                # 支付失败
-                print('code=%s' % code)
-                print('trade_status=%s' % trade_status)
-                return JsonResponse({'code': 4, 'message': '订单支付失败'})
+                print(code)
+                return JsonResponse({'code': 4, 'message': '支付失败'})
 
 
 

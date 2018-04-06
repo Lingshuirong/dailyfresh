@@ -15,7 +15,7 @@ from apps.goods.models import GoodsCategory, IndexSlideGoods, IndexPromotion, In
 from dailyfresh import settings
 
 # 创建celery对象
-app = Celery('dailyfresh', broker='redis://127.0.0.1:6379/1')
+app = Celery('', broker='redis://127.0.0.1:6379/1')
 
 
 @app.task

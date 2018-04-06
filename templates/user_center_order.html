@@ -98,12 +98,14 @@
 
 				<div class="pagenation">
                     {% if page.has_previous %}
-                        <a href="{% url 'users:order' page.previous_page_number %}">上一页</a>
+                        <a href="{% url 'users:order' page.previous_page_number %}"><上一页</a>
                     {% endif %}
 
                     {% for index in page_list %}
-                        {% if index == page.number %}
-                            <a href="{% url 'users:order' index %}" class="active">{{ index }}</a>
+                        {% if index == page.number  %}
+                            <a href="#" class="active">{{ index }}</a>
+                        {% else %}
+                            <a href="{% url 'users:order' index %}">{{ index }}</a>
                         {% endif %}
                     {% endfor %}
 
@@ -156,7 +158,7 @@
             if (status == 1) {
                 var params = {
                     'order_id': order_id,
-                    'csrfmiddlewaretoken': csrf,
+                    'csrfmiddlewaretoken': csrf
                 };
 
                 // 发起post请求

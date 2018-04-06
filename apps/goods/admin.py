@@ -4,9 +4,9 @@ from django.contrib import admin
 from django.core.cache import cache
 
 from apps.goods.models import GoodsSPU, GoodsCategory, GoodsSKU, IndexSlideGoods, IndexPromotion
+from celery_task.tasks import generate_static_html
 
 # admin.site.register(GoodsSPU)
-from celery_task.tasks import generate_static_html
 
 
 class BaseAdmin(admin.ModelAdmin):
