@@ -118,50 +118,39 @@ class CartUpdateView(View):
     """更新购物车"""
 
     def post(self, request):
-        """修改商品数量"""
+        """ 修改购物车商品数量"""
 
+        # 判断登录状态
         if not request.user.is_authenticated():
             return JsonResponse({'code': 1, 'errmsg': '请先登录'})
 
-        # 获取用户提交参数
+        # 获取请求参数: sku_id count
         sku_id = request.POST.get('sku_id')
         count = request.POST.get('count')
 
-        # 参数是否为空
+        # 参数合法性判断
         if not all([sku_id, count]):
-            return JsonResponse({'code': 2, 'errmsg': '请求参数不能为空'})
-
-        # 检验购买数量合法性
-        try:
-            count = int(count)
-        except Exception:
-            return JsonResponse({'code': 3, 'errmsg': '够买数量格式不正确'})
-
-        # 检验商品是否存在
+            return JsonResponse({'code': 2, 'errmsg': '参数不能为空'})
         try:
             sku = GoodsSKU.objects.get(id=sku_id)
         except GoodsSKU.DoesNotExist:
-            return JsonResponse({'code': 4, 'errmsg':'商品不存在'})
+            return JsonResponse({'code': 3, 'errmsg': '商品不存在'})
+        try:
+            count = int(count)
+        except:
+            return JsonResponse({'code': 4, 'errmsg': '购买数量需为整数'})
 
-        # todo: 业务处理：修改redis数据库中商品够买数量
-        sr = get_redis_connection()
-        key = 'cart_%s' % request.user.id
-        # 库存判断
         if count > sku.stock:
             return JsonResponse({'code': 5, 'errmsg': '库存不足'})
 
-        # 修改hash类型中字段的值
-        total_count = 0
-        my_list = sr.hvals(key)
-        for val in my_list:
-            total_count += int(val)
+        # todo: 业务处理: 保存购物车商品数量
+        # hset cart_1 sku_id count
+        strict_redis = get_redis_connection()
+        key = 'cart_%s' % request.user.id
+        strict_redis.hset(key, sku_id, count)
 
-        # 响应请求：返回json数据
-        context = {
-            'code': 0,
-            'total_count': total_count,
-        }
-        return JsonResponse(context)
+        # 响应json
+        return JsonResponse({'code': 0, 'message': '商品数量修改成功'})
 
 
 class CartDeleteView(View):

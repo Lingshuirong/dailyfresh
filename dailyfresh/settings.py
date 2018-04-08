@@ -176,4 +176,4 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
 
 # 收集静态文件目录
-STATIC_ROOT = '/home/python/Desktop/static'
+# STATIC_ROOT = '/home/python/Desktop/static'

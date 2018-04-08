@@ -121,7 +121,7 @@
                 var price = $(this).find('.col05').text();
                 count = parseInt(count);
                 amount = parseFloat(price) * count;
-                console.log('-----' + count + "   " + amount);
+{#                console.log('-----' + count + "   " + amount);#}
                 // 累加总数量和总金额
                 total_count += count;
                 total_amount += amount;
@@ -132,6 +132,8 @@
             $('.settlements').find('b').html(total_count);
             // toFixed: 保留小数点2位
             $('.settlements').find('em').html(total_amount.toFixed(2));
+            console.log('-----' + total_count + "   " + total_amount);
+
         }
 
         // todo: 全选和全不选
@@ -198,6 +200,7 @@
             var $count = $(this).next();
             var $ul = $(this).parents('ul');
 
+
             // 通过ajax发起post请求
             $.post('/cart/update', params, function (result) {
                 // 失败: {'code': 5, 'errmsg': '库存不足'}
@@ -210,6 +213,8 @@
                     update_amount($ul);
                     // 3. 刷新总数量和总金额
                     update_goods_amount();
+
+
                 } else { // 请求失败
                     alert(result.errmsg)
                 }
