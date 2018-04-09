@@ -10,6 +10,7 @@ from django.views.generic.base import View
 from django_redis import get_redis_connection
 
 from apps.goods.models import GoodsCategory, IndexSlideGoods, IndexPromotion, IndexCategoryGoods, GoodsSKU
+from apps.orders.models import OrderGoods
 from utils.common import BaseCartView
 
 
@@ -80,6 +81,9 @@ class DetailView(BaseCartView):
             # 查询不到商品则跳转
             return redirect(reverse('goods:index'))
 
+        # 获取商品的评论信息
+        order_skus = OrderGoods.objects.filter(sku=sku).exclude(comment='')
+
         # 获取所有的类别数据
         categories = GoodsCategory.objects.all()
 
@@ -120,6 +124,7 @@ class DetailView(BaseCartView):
             'new_skus': new_skus,
             'cart_count': cart_count,
             'other_skus': other_skus,
+            'order_sku': order_skus
 
         }
 
@@ -196,6 +201,5 @@ class ListView(BaseCartView):
             'cart_count': cart_count,
             'sort': sort,
         }
-
 
         return render(request, 'list.html', context)

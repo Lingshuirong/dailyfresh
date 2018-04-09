@@ -73,6 +73,7 @@ class CartAddVies(View):
              }
         return JsonResponse(context)
 
+
 class CartInfoView(LoginRequiredMixin, View):
     """购物车显示界面： 需要先登录才能访问"""
 

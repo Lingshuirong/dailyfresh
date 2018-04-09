@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^commit$', views.CommitOrderView.as_view(), name='commit'),
     url(r'^pay$', views.OrderPayView.as_view(), name='pay'),
     url(r'^check$', views.CheckPayView.as_view(), name='check'),
+    url(r'^comment/(\d+)', views.CommentView.as_view(), name='comment'),
 ]
