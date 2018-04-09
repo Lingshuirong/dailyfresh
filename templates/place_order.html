@@ -151,7 +151,7 @@
             var pay_method = $('input[name="pay_style"]:checked').val();
             var csrf = $('input[name="csrfmiddlewaretoken"]').val();
             var sku_ids_str = $(this).attr('sku_ids_str');
-            alert(address_id + " " + pay_method + ' ' + csrf + ' ' + sku_ids_str);
+{#            alert(address_id + " " + pay_method + ' ' + csrf + ' ' + sku_ids_str);#}
 
             // 定义post请求参数
             var params = {

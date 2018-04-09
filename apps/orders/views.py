@@ -260,6 +260,7 @@ class OrderPayView(View):
         # 定义支付引导界面,并返回给浏览器
         pay_url = 'https://openapi.alipaydev.com/gateway.do?' + order_str
         data = {'code': 0, 'pay_url': pay_url}
+        print(data['pay_url'])
         return JsonResponse(data)
 
 
@@ -374,6 +375,7 @@ class CommentView(View):
 
         # 动态给order增加属性order_skus, 保存订单商品信息
         order.order_skus = order_skus
+        print(order.order_skus)
 
         # 使用模板
         return render(request, "order_comment.html", {"order": order})
@@ -381,6 +383,7 @@ class CommentView(View):
     def post(self, request, order_id):
         """订单商品评论"""
         user = request.user
+        print(order_id)
         # 校验数据
         if not order_id:
             return redirect(reverse('users:order'))
@@ -400,6 +403,7 @@ class CommentView(View):
             sku_id = request.POST.get("sku_%d" % i)  # sku_1 sku_2
             # 获取评论的商品的内容
             comment = request.POST.get('comment_%d' % i, '')  # comment_1 comment_2
+            print(comment)
             try:
                 order_goods = OrderGoods.objects.get(order=order, sku_id=sku_id)
             except OrderGoods.DoesNotExist:

@@ -60,6 +60,8 @@ class OrderInfo(BaseModel):
 
     class Meta:
         db_table = "df_order_info"
+        verbose_name = "订单信息"
+        verbose_name_plural = "订单信息"
 
 
 class OrderGoods(BaseModel):
@@ -73,3 +75,5 @@ class OrderGoods(BaseModel):
 
     class Meta:
         db_table = "df_order_goods"
+        verbose_name = "订单信息"
+        verbose_name_plural = "订单信息"

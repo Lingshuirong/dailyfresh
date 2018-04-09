@@ -124,7 +124,7 @@ class DetailView(BaseCartView):
             'new_skus': new_skus,
             'cart_count': cart_count,
             'other_skus': other_skus,
-            'order_sku': order_skus
+            'order_skus': order_skus
 
         }
 
