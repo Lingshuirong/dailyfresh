@@ -117,7 +117,7 @@
 			</div>
 			<div class="total">总价：<em>{{ sku.price }}元</em></div>
 			<div class="operate_btn">
-				<a href="javascript:;" class="buy_btn">立即购买</a>
+				<a href="{% url 'orders:place' %}" class="buy_btn">立即购买</a>
 				<a href="javascript:;" class="add_cart" sku_id = {{ sku.id }} id="add_cart">加入购物车</a>
 			</div>
 		</div>
@@ -311,6 +311,7 @@
             })
             })
         });
+
 
         {% comment %}
 		var $add_x = $('#add_cart').offset().top;
