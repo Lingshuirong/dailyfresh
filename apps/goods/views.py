@@ -59,7 +59,7 @@ class IndexView(BaseCartView):
             cache.set('index_page_data', context, 3600)
 
         else:
-            print('缓存不为空，从缓存中读取')
+            pass
 
         # 查询购物车中商品数量（动态生成）
         cart_count = super().get_cart_count(request)
@@ -176,19 +176,7 @@ class ListView(BaseCartView):
         # 获取页数列表
         page_list = paginator.page_range
 
-        # 购物车
-        # 如果是登录的用户
         if request.user.is_authenticated():
-            # 获取用户id
-            # user_id = request.user.id
-
-            # 从redis中获取购物车的信息
-            # strict_redis = get_redis_connection()
-
-            # 如果redis中不存在，会返回None
-            # cart_dict = strict_redis.hgetall('cart_%s' % user_id)
-            # for val in cart_dict.values():
-            #     cart_count += int(val)
             cart_count = super().get_cart_count(request)
 
             # 构造上下文

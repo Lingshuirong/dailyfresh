@@ -36,11 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.users',
-    'apps.goods',
-    'apps.orders',
-    'apps.cart',
-    'tinymce',
+    'apps.users',  # 用户模块
+    'apps.goods',  # 商品模块
+    'apps.orders',  # 订单模块
+    'apps.cart',  # 购物车模块
+    'tinymce',  # 富文本
     'haystack',  # 使用haystack全文检索框架
 )
 
