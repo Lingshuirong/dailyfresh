@@ -117,7 +117,7 @@
 			</div>
 			<div class="total">总价：<em>{{ sku.price }}元</em></div>
 			<div class="operate_btn">
-				<a href="{% url 'orders:place' %}" class="buy_btn">立即购买</a>
+				<a class="buy_btn" sku_id = {{ sku.id }} >立即购买</a>
 				<a href="javascript:;" class="add_cart" sku_id = {{ sku.id }} id="add_cart">加入购物车</a>
 			</div>
 		</div>
@@ -291,12 +291,16 @@
                 }
             });
 
+
+        });
+
         // 点击购买跳转
         $('.buy_btn').click(function () {
             // 点击购买时，跳转到付款界面
             var sku_id = $(this).attr('sku_id');
             var count = $('.num_show').val();
             var token = $('input[name="csrfmiddlewaretoken"]').val();
+            alert(sku_id + ' ' + count)
 
             // 定义post请求参数
             var params = {
@@ -304,13 +308,12 @@
                 'count': count,
                 'csrfmiddlewaretoken': token,
             };
-            
-            // 发起post请求，跳转到/orders/place页面
-            $.post('/order/place', params , function () {
-                
-            })
-            })
-        });
+
+            // 发起post请求，跳转到/orders/buy页面
+            $.post('/orders/buy', params, function () {
+                window.location.href = '/orders/place';
+            });
+            });
 
 
         {% comment %}

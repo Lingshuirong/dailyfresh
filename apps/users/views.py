@@ -143,23 +143,6 @@ class LoginView(View):
         password = request.POST.get('password')
         remember = request.POST.get('remember')
 
-        # 判断用户信息是否为空
-        # if not all([username, password]):
-        #     return render(request, 'login.html', {'errmsg': '用户名或者密码为空'})
-        #
-        # # 判断用户名是否存在,返回一个用户对象
-        #
-        # , password=password)
-        # if user is None:
-        #     return render(request, 'login.html', {'errmsg': '用户不能存在'})
-        #
-        # # 判断用户是否激活
-        # if user.is_active == 0:
-        #     return render(request, 'login.html', {'errmsg': '用户还未激活，是否前往邮箱激活'})
-        #
-        # login(request, user)
-
-
         # 校验参数合法性
         if not all([username, password]):
             return render(request, 'login.html', {'errmsg': '请求参数不完整'})

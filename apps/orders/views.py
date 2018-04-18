@@ -2,9 +2,10 @@ from time import sleep
 
 import alipay
 from django.db import transaction
+from django.template import loader
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -14,7 +15,7 @@ from django_redis import get_redis_connection
 from apps.goods.models import GoodsSKU
 from apps.orders.models import OrderInfo, OrderGoods
 from datetime import datetime
-from apps.users.models import Address
+from apps.users.models import Address, User
 from utils.common import LoginRequiredMixin
 
 
@@ -348,7 +349,6 @@ class CheckPayView(View):
 
 
 class CommentView(View):
-
     def get(self, request, order_id):
         """显示订单商品评价界面"""
         user = request.user
@@ -420,10 +420,55 @@ class CommentView(View):
         return redirect(reverse("users:order", args=[1]))
 
 
+class BuyView(View):
+    def post(self, request):
+        """直接购买商品"""
 
+        # 从请求体中获取参数
+        sku_id = request.POST.get('sku_id')
+        count = request.POST.get('count')
+        user_id = request.user.id
 
+        # 判断用户是否已经登陆
+        if not request.user.is_authenticated():
+            return JsonResponse({'code': 1,'errmsg': '请先登录'})
 
+        # 判断参数是否为空
+        if not all([sku_id, count]):
+            return JsonResponse({'code': 2, 'errmsg': '参数不能为空'})
 
+        # 判断参数是否合法
+        try:
+            count = int(count)
+        except Exception:
+            return JsonResponse({'code': 3, 'errmsg': '购买数量不合法'})
 
+        # 判断商品是否存在
+        sku = GoodsSKU.objects.get(id=sku_id)
+        if not sku:
+            return JsonResponse({'code': 4, 'errmsg': '商品不存在'})
+        print(22222)
+        # 判断商品的库存是否足够
+        if count > sku.stock:
+            return JsonResponse({'code': 5, 'errmsg': '商品库存不足'})
+        print(22222333333)
+        user = User.objects.get(id=user_id)
+        total_count = count
+        trans_cost = 10
+        total_amount = total_count * sku.price
+        total_pay = total_amount + trans_cost
+        context = {
+            'sku': sku,
+            'total_count': total_count,
+            'trans_cost': trans_cost,
+            'total_amount': total_amount,
+            'total_pay': total_pay,
+            'sku_ids_str': sku_id,
+            'user': user,
+        }
 
-
+        print(12345)
+        # template = loader.get_template('place_order2.html')
+        # html_str = template.render(context, request)
+        return render(request, 'place_order2.html', context)
+        # return HttpResponse(html_str)
