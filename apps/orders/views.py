@@ -135,7 +135,7 @@ class CommitOrderView(View):
         # 创建一个保存点
         point = transaction.savepoint()
         try:
-            # todo: 修改订单信息表: 保存订单数据到订单信息表中
+            # 修改订单信息表: 保存订单数据到订单信息表中
             total_count = 0
             total_amount = 0
             trans_cost = 10
@@ -160,7 +160,7 @@ class CommitOrderView(View):
             key = 'cart_%s' % request.user.id
             cart_dict = strict_redis.hgetall(key)
 
-            # todo: 核心业务: 遍历每一个商品, 并保存到订单商品表
+            # 核心业务: 遍历每一个商品, 并保存到订单商品表
             for sku_id in sku_ids:
                 # 查询订单中的每一个商品
                 try:
@@ -173,7 +173,8 @@ class CommitOrderView(View):
                     return JsonResponse({'code': 4, 'message': '商品不存在'})
 
                 # 获取商品数量，并判断库存
-                # {1: 2, 2: 2}
+                # {1: 2, 2: 2} 问题点数据库查询不到记录
+                # todo: redis数据库内容
                 sku_count = cart_dict.get(sku_id.encode())
                 sku_count = int(sku_count)
                 if sku_count > sku.stock:
@@ -182,7 +183,7 @@ class CommitOrderView(View):
 
                     return JsonResponse({'code': 5, 'message': '库存不足'})
 
-                # todo: 修改订单商品表: 保存订单商品到订单商品表
+                # 修改订单商品表: 保存订单商品到订单商品表
                 OrderGoods.objects.create(
                     count=sku_count,
                     price=sku.price,
@@ -190,7 +191,7 @@ class CommitOrderView(View):
                     order=order,
                 )
 
-                # todo: 修改商品sku表: 减少商品库存, 增加商品销量
+                # 修改商品sku表: 减少商品库存, 增加商品销量
                 sku.stock -= sku_count
                 sku.sales += sku_count
                 sku.save()
@@ -199,7 +200,7 @@ class CommitOrderView(View):
                 total_count += sku_count
                 total_amount += sku.price * sku_count
 
-                # todo: 修改订单信息表: 修改商品总数量和总金额
+                # 修改订单信息表: 修改商品总数量和总金额
             order.total_count = total_count
             order.total_amount = total_amount
             order.save()
@@ -459,6 +460,11 @@ class BuyView(View):
         # 判断商品的库存是否足够
         if count > sku.stock:
             return JsonResponse({'code': 5, 'errmsg': '商品库存不足'})
+
+        # 添加到redis
+        strict_redis = get_redis_connection()
+        key = 'cart_%s' % request.user.id
+        strict_redis.hset(key, sku_id, count)
 
         user = request.user
         address = Address.objects.filter(
