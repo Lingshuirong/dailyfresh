@@ -22,6 +22,9 @@ from utils.common import LoginRequiredMixin
 class PlaceOrderView(LoginRequiredMixin, View):
     """订单确认页面"""
 
+    def get(self):
+        pass
+
     def post(self, request):
         """进入确认订单界面"""
 
@@ -421,17 +424,17 @@ class CommentView(View):
 
 
 class BuyView(View):
+
     def post(self, request):
         """直接购买商品"""
 
         # 从请求体中获取参数
         sku_id = request.POST.get('sku_id')
         count = request.POST.get('count')
-        user_id = request.user.id
 
         # 判断用户是否已经登陆
         if not request.user.is_authenticated():
-            return JsonResponse({'code': 1,'errmsg': '请先登录'})
+            return JsonResponse({'code': 1, 'errmsg': '请先登录'})
 
         # 判断参数是否为空
         if not all([sku_id, count]):
@@ -447,12 +450,14 @@ class BuyView(View):
         sku = GoodsSKU.objects.get(id=sku_id)
         if not sku:
             return JsonResponse({'code': 4, 'errmsg': '商品不存在'})
-        print(22222)
+
         # 判断商品的库存是否足够
         if count > sku.stock:
             return JsonResponse({'code': 5, 'errmsg': '商品库存不足'})
-        print(22222333333)
-        user = User.objects.get(id=user_id)
+
+        user = request.user
+        address = Address.objects.filter(
+            user=request.user).latest('create_time')
         total_count = count
         trans_cost = 10
         total_amount = total_count * sku.price
@@ -465,10 +470,7 @@ class BuyView(View):
             'total_pay': total_pay,
             'sku_ids_str': sku_id,
             'user': user,
+            'address': address
         }
 
-        print(12345)
-        # template = loader.get_template('place_order2.html')
-        # html_str = template.render(context, request)
         return render(request, 'place_order2.html', context)
-        # return HttpResponse(html_str)

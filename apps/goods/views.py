@@ -1,7 +1,7 @@
 from django.core.cache import cache
 from django.core.paginator import Paginator, EmptyPage
 from django.core.urlresolvers import reverse
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.views.generic.base import View
@@ -11,6 +11,7 @@ from django_redis import get_redis_connection
 
 from apps.goods.models import GoodsCategory, IndexSlideGoods, IndexPromotion, IndexCategoryGoods, GoodsSKU
 from apps.orders.models import OrderGoods
+from apps.users.models import Address
 from utils.common import BaseCartView
 
 

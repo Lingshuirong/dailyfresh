@@ -296,7 +296,7 @@
 
         // 点击购买跳转
         $('.buy_btn').click(function () {
-            // 点击购买时，跳转到付款界面
+            // 点击购买时，跳转确认订单界面
             var sku_id = $(this).attr('sku_id');
             var count = $('.num_show').val();
             var token = $('input[name="csrfmiddlewaretoken"]').val();
@@ -310,7 +310,7 @@
             };
 
             // 发起post请求，跳转到/orders/buy页面
-            $.post('/orders/buy', params, function () {
+            $.post('/orders/buy', params,function () {
                 window.location.href = '/orders/place';
             });
             });
