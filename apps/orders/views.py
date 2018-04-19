@@ -22,8 +22,11 @@ from utils.common import LoginRequiredMixin
 class PlaceOrderView(LoginRequiredMixin, View):
     """订单确认页面"""
 
-    def get(self):
-        pass
+    def get(self, request):
+        buy_context = BuyView()
+        print(buy_context.context)
+
+        return render(request, 'place_order2.html', buy_context.context)
 
     def post(self, request):
         """进入确认订单界面"""
@@ -425,6 +428,8 @@ class CommentView(View):
 
 class BuyView(View):
 
+    context = {}
+
     def post(self, request):
         """直接购买商品"""
 
@@ -462,7 +467,9 @@ class BuyView(View):
         trans_cost = 10
         total_amount = total_count * sku.price
         total_pay = total_amount + trans_cost
-        context = {
+        sku_amount = count * sku.price
+
+        BuyView.context = {
             'sku': sku,
             'total_count': total_count,
             'trans_cost': trans_cost,
@@ -470,7 +477,10 @@ class BuyView(View):
             'total_pay': total_pay,
             'sku_ids_str': sku_id,
             'user': user,
-            'address': address
+            'address': address,
+            'count': count,
+            'sku_amount': sku_amount,
+
         }
 
-        return render(request, 'place_order2.html', context)
+        return JsonResponse({'code': 0, 'message': '发送成功'})
