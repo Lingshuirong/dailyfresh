@@ -139,6 +139,16 @@
 <script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 <script>
 
+    var status = $('.oper_btn').attr('status')
+    console.log(status)
+    if (status == 1) {
+        $('.oper_btn').text('去支付')
+    } else if (status == 4) {
+        $('.oper_btn').text('去评价')
+    } else if (status == 5) {
+        $('.oper_btn').text('已完成')
+    };
+
     $('.oper_btn').click(function () {
         var order_id = $(this).attr('order_id');
         var status = $(this).attr('status');
@@ -167,10 +177,10 @@
                 });
             });
         } else if (status == 4) {
-            $(this).text('去评价')
+{#            $(this).text('去评价')#}
             window.location.href = '/orders/comment/' + order_id
         } else if (status == 5) {
-            $(this).text('已完成')
+{#            $(this).text('已完成')#}
         }
     })
 
