@@ -66,7 +66,7 @@ class RegisterView(View):
 
         # 发送激活邮件到用户邮箱
         user_id = user.id
-        print(user_id)
+
         # 用itstandgerous生成激活token
         s = Serializer(settings.SECRET_KEY, 3600)
         token = s.dumps({'confirm': user_id})
@@ -116,7 +116,6 @@ class ActiveView(View):
             my_dict = s.loads(token)
 
             user_id = my_dict.get('confirm')
-            print(user_id)
 
         except SignatureExpired:
             return HttpResponse('Url已经过期')
@@ -158,7 +157,6 @@ class LoginView(View):
         # 通过 django 提供的authenticate方法，
         # 验证用户名和密码是否正确
         user = authenticate(username=username, password=password)
-        print(user)
 
         # 用户名或密码不正确
         if user is None:
@@ -203,8 +201,6 @@ class UserAddressView(LoginRequiredMixin, View):
         user = request.user
         try:
             address = user.address_set.latest('create_time')
-            print(111)
-            print(address.receiver_name)
         except Exception:
             address = None
 

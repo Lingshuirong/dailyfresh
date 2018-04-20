@@ -24,7 +24,6 @@ class PlaceOrderView(LoginRequiredMixin, View):
 
     def get(self, request):
         buy_context = BuyView()
-        print(buy_context.context)
 
         return render(request, 'place_order2.html', buy_context.context)
 
@@ -268,7 +267,6 @@ class OrderPayView(View):
         # 定义支付引导界面,并返回给浏览器
         pay_url = 'https://openapi.alipaydev.com/gateway.do?' + order_str
         data = {'code': 0, 'pay_url': pay_url}
-        print(data['pay_url'])
         return JsonResponse(data)
 
 
@@ -306,31 +304,7 @@ class CheckPayView(View):
             debug=True  # 默认False  True: 表示使用测试环境(沙箱环境)
         )
 
-        # 调用第三方sdk查询订单支付结果
-        '''
-         {
-            "trade_no": "2017032121001004070200176844",
-            "code": "10000",
-            "invoice_amount": "20.00",
-            "open_id": "20880072506750308812798160715407",
-            "fund_bill_list": [
-              {
-                "amount": "20.00",
-                "fund_channel": "ALIPAYACCOUNT"
-              }
-            ],
-            "buyer_logon_id": "csq***@sandbox.com",
-            "send_pay_date": "2017-03-21 13:29:17",
-            "receipt_amount": "20.00",
-            "out_trade_no": "out_trade_no15",
-            "buyer_pay_amount": "20.00",
-            "buyer_user_id": "2088102169481075",
-            "msg": "Success",
-            "point_amount": "0.00",
-            "trade_status": "TRADE_SUCCESS",
-            "total_amount": "20.00"
-          },
-        '''
+
         while True:
             result_dict = alipay.api_alipay_trade_query(out_trade_no=order_id)
             code = result_dict.get('code')
@@ -348,10 +322,10 @@ class CheckPayView(View):
                 # 等待买家付款
                 # 40004: 支付暂时失败, 过一会可以成功
                 sleep(2)
-                print(code)
+                # print(code)
                 continue
             else:
-                print(code)
+                # print(code)
                 return JsonResponse({'code': 4, 'message': '支付失败'})
 
 
@@ -382,7 +356,6 @@ class CommentView(View):
 
         # 动态给order增加属性order_skus, 保存订单商品信息
         order.order_skus = order_skus
-        print(order.order_skus)
 
         # 使用模板
         return render(request, "order_comment.html", {"order": order})
@@ -390,7 +363,7 @@ class CommentView(View):
     def post(self, request, order_id):
         """订单商品评论"""
         user = request.user
-        print(order_id)
+
         # 校验数据
         if not order_id:
             return redirect(reverse('users:order'))
@@ -410,7 +383,6 @@ class CommentView(View):
             sku_id = request.POST.get("sku_%d" % i)  # sku_1 sku_2
             # 获取评论的商品的内容
             comment = request.POST.get('comment_%d' % i, '')  # comment_1 comment_2
-            print(comment)
             try:
                 order_goods = OrderGoods.objects.get(order=order, sku_id=sku_id)
             except OrderGoods.DoesNotExist:

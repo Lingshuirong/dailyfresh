@@ -26,7 +26,6 @@ class IndexView(BaseCartView):
 
         # 判断缓存是否为空
         if context is None:
-            print('缓存为空，数据将从mysql查找')
             # 查询商品列别数据
             categories = GoodsCategory.objects.all()
 
