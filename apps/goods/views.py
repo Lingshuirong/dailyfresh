@@ -103,9 +103,6 @@ class DetailView(BaseCartView):
 
             # 从redis中获取购物车的信息
             strict_redis = get_redis_connection('default')
-            # cart_dict = strict_redis.hgetall('cart_%s' % user_id)
-            # for val in cart_dict.values():
-            #     cart_count += int(val)
             cart_count = super().get_cart_count(request)
 
             # 移除现有的商品浏览记录

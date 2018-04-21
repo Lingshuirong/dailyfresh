@@ -3,6 +3,7 @@ import re
 from celery.app.base import Celery
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage
 from django.core.signing import SignatureExpired
@@ -13,14 +14,14 @@ from django.db.backends.mysql.base import IntegrityError
 from django.db.utils import IntegrityError
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse, HttpResponseRedirect
-
+from django.contrib.auth.views import PasswordResetForm
 # Create your views here.
 from django.views.generic.base import View
 
 from apps.goods.models import GoodsSKU
 from apps.orders.models import OrderInfo, OrderGoods
 from apps.users.models import User, Address
-from celery_task.tasks import send_active_mail
+from celery_task.tasks import send_active_mail, send_change_password
 from dailyfresh import settings
 from utils.common import LoginRequiredMixin
 
@@ -318,4 +319,68 @@ class UserOrderView(LoginRequiredMixin, View):
             'page_list': page_list,
         }
         return render(request, 'user_center_order.html', data)
+
+
+# 找回密码
+class RePassword(View):
+    def get(self, request):
+        """重设用户密码"""
+        return render(request, 're_password.html')
+
+
+# 处理密码重设
+class Rec(View):
+    """重设密码"""
+
+    def post(self, request):
+        """接收邮箱"""
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+
+        user = User.objects.get(username=username)
+        user_id = user.id
+        # 用itstandgerous生成激活token
+        s = Serializer(settings.SECRET_KEY, 3600)
+        token = s.dumps({'confirm': user_id})
+        token = token.decode()
+        print(token)
+        # 方式二 使用celery异步多任务队列
+        send_change_password.delay(username, email, token)
+
+        return redirect(reverse('users:login'))
+
+
+# 更改密码
+class Change(View):
+    def get(self, request, token):
+        """重设密码"""
+        data = {
+            'token': token
+        }
+
+        return render(request, 'reset_password.html', data)
+
+    def post(self, request, token):
+
+        # 获取用户输入的密码和确认密码
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        try:
+            s = Serializer(settings.SECRET_KEY, 3600)
+            # 解密获取用户id
+            my_dict = s.loads(token)
+
+            user_id = my_dict.get('confirm')
+            print(user_id)
+        except SignatureExpired:
+            return HttpResponse('Url已经过期')
+
+        user = User.objects.get(id=user_id)
+
+        if password == password2:
+            user.password = make_password(password)
+            user.save()
+
+        return redirect(reverse('users:login'))
 

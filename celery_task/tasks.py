@@ -83,3 +83,18 @@ def generate_static_html():
     with open(file_path, 'w') as file:
         file.write(html_str)
 
+
+@app.task
+def send_change_password(username, email, token):
+    """发送邮件更改密码"""
+    subject = "天天生鲜用户更改密码"
+    message = ''
+    from_email = settings.EMAIL_FROM
+    recipient_list = [email]
+    html_message = '<h3>尊敬的%(name)s:</h3> 欢迎来到天天生鲜' \
+                   '请点击以下链接更改您的用户密码：</br>' \
+                   '<a href="http://127.0.0.1:8000/users/change/%(token)s"> \
+                   http://127.0.0.1:8000/users/change/%(token)s</a>' \
+                   % {'name': username, 'token': token}
+    send_mail(subject, message, from_email, recipient_list, html_message=html_message)
+

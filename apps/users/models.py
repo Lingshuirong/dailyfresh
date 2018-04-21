@@ -10,11 +10,12 @@ from tinymce.models import HTMLField
 from utils.models import BaseModel
 
 
-class User(BaseModel,AbstractUser):
+class User(BaseModel, AbstractUser):
     """用户信息模型类"""
 
     class Meta(object):
         db_table = 'df_user'
+
 
 class Address(BaseModel):
     """地址"""
