@@ -336,17 +336,13 @@ class Rec(View):
         """接收邮箱"""
         email = request.POST.get('email')
         username = request.POST.get('username')
-
         user = User.objects.get(username=username)
         user_id = user.id
         # 用itstandgerous生成激活token
         s = Serializer(settings.SECRET_KEY, 3600)
         token = s.dumps({'confirm': user_id})
         token = token.decode()
-        print(token)
-        # 方式二 使用celery异步多任务队列
         send_change_password.delay(username, email, token)
-
         return redirect(reverse('users:login'))
 
 
@@ -357,7 +353,6 @@ class Change(View):
         data = {
             'token': token
         }
-
         return render(request, 'reset_password.html', data)
 
     def post(self, request, token):
@@ -372,12 +367,10 @@ class Change(View):
             my_dict = s.loads(token)
 
             user_id = my_dict.get('confirm')
-            print(user_id)
         except SignatureExpired:
             return HttpResponse('Url已经过期')
 
         user = User.objects.get(id=user_id)
-
         if password == password2:
             user.password = make_password(password)
             user.save()
