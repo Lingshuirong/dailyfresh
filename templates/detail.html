@@ -266,7 +266,6 @@
             var sku_id = $(this).attr('sku_id');
             var count = $('.num_show').val();
             var token = $('input[name="csrfmiddlewaretoken"]').val();
-{#            alert(token)#}
 
             //定义post请求参数
             var params = {
@@ -283,7 +282,6 @@
                 if (result.code == 0) {
                     //添加到购物车成功
 
-{#                    alert(result.cart_count)#}
                     $('#show_count').text(result.cart_count)
                 }else{
                     //请求失败

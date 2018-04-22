@@ -36,7 +36,7 @@
 					<a href="{% url 'users:order' 1 %}">我的订单</a>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 
 	<div class="search_bar clearfix">
@@ -49,15 +49,15 @@
 		</div>
 		<div class="guest_cart fr">
 			<a href="{% url 'cart:info' %}" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl">1</div>
+			<div class="goods_count fl">{{ cart_count }}</div>
 		</div>
 	</div>
 
 	<div class="navbar_con">
 		<div class="navbar clearfix">
 			<div class="subnav_con fl">
-				<h1>全部商品分类</h1>	
-				<span></span>			
+				<h1>全部商品分类</h1>
+				<span></span>
 				<ul class="subnav">
 
                     {# 显示搜有分类 #}
@@ -129,7 +129,7 @@
                         <div class="operate">
                             <span class="prize">￥{{ sku.price }}</span>
                             <span class="unit">{{ sku.price }}/{{ sku.unit }}</span>
-                            <a href="#" class="add_goods" title="加入购物车"></a>
+                            <a class="add_goods" sku_id={{ sku.id }} title="加入购物车"></a>
                         </div>
 				    </li>
                 {% endfor %}
@@ -141,7 +141,7 @@
                 {% if page.has_previous %}
                     <a href="{% url 'goods:list' category.id page.previous_page_number %}?sort={{ sort }}">上一页</a>
                 {% endif %}
-            
+
                 {% for index in page_list %}
                     <a href="{% url 'goods:list' category.id index %}?sort={{ sort }}"
                     {% if index == page.num %}class="active"{% endif %}>{{ index }}</a>
@@ -163,18 +163,47 @@
 			<span>|</span>
 			<a href="#">招聘人才</a>
 			<span>|</span>
-			<a href="#">友情链接</a>		
+			<a href="#">友情链接</a>
 		</div>
 		<p>CopyRight © 2018 江门天天生鲜信息技术有限公司 All Rights Reserved</p>
 		<p>电话：0750-****888    粤ICP备*******8号</p>
 	</div>
 
+    {% csrf_token %}
     {% load staticfiles %}
     <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
-    <script type="text/javascript"></script>>
+    <script type="text/javascript">
 
+        $('.add_goods').click(function () {
+            //商品id和购买数量
+            var sku_id = $(this).attr('sku_id');
+            var count = 1;
+            var token = $('input[name="csrfmiddlewaretoken"]').val();
+{#            alert(sku_id + ' ' + count + ' ' + token);#}
 
+            //定义post请求参数
+            var params = {
+                'sku_id': sku_id,
+                'count': count,
+                'csrfmiddlewaretoken': token,
+            };
 
-	
+            //发起post请求
+            $.post('/cart/add', params, function (result) {
+                //result服务器返回结果数据
+                // {'code': 1, 'errmsg': '请先登录'}
+                // {'code': 0,'total_count': 2}
+                if (result.code == 0) {
+                    //添加到购物车成功
+                    $('#show_count').text(result.cart_count)
+                    location.href = ''
+                }else{
+                    //请求失败
+                    alert(result.errmsg);
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
