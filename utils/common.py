@@ -22,11 +22,9 @@ class BaseCartView(View):
             strict_redis = get_redis_connection()
             key = 'cart_%s' % request.user.id
             vals = strict_redis.hvals(key)
-
             # 累加商品数量
             for count in vals:
                 cart_count += int(count)
-
         return cart_count
 
 

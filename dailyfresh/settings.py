@@ -135,15 +135,6 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
-# 会话配置
-# SESSION_ENGINE = 'redis_sessions.session'
-# SESSION_REDIS_HOST = 'localhost'
-# SESSION_REDIS_PORT = 6379
-# SESSION_REDIS_DB = 2
-# SESSION_REDIS_PASSWORD = ''
-# SESSION_REDIS_PREFIX = 'session'
-
-
 # 邮箱配置信息
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.163.com'

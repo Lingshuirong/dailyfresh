@@ -14,17 +14,12 @@ class BaseAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         """后台保存数据时候使用"""
-        # obj表示保存的对象，调用save（），将对象保存到数据库中
-        # obj.save()
         super().save_model(request, obj, form, change)
-        # 调用delery异步生成静态文件方法
         generate_static_html.delay()
-        # 后台修改完数据删除缓存
         cache.delete('index_page_data')
 
     def delete_model(self, request, obj):
         """后台保存数据是使用"""
-        # obj.delete()
         super().delete_model(request, obj)
         generate_static_html.delay()
         cache.delete('index_page_data')
