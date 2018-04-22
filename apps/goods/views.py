@@ -114,6 +114,8 @@ class DetailView(BaseCartView):
 
             # 控制历史浏览记录最多保存3项(包含头尾)
             strict_redis.ltrim(key, 0, 2)
+        else:
+            cart_count = 0
 
         context = {
             'categories': categories,
@@ -175,8 +177,10 @@ class ListView(BaseCartView):
 
         if request.user.is_authenticated():
             cart_count = super().get_cart_count(request)
+        else:
+            cart_count = 0
 
-            # 构造上下文
+        # 构造上下文
         context = {
             'category': category,
             'categories': categories,
