@@ -18,8 +18,8 @@ def send_active_mail(username, email, token):
     recipient_list = [email]
     html_message = '<h3>尊敬的%(name)s:</h3> 欢迎注册天天生鲜' \
                    '请点击以下链接激活您的账号：</br>' \
-                   '<a href="http://127.0.0.1:8000/users/active/%(token)s"> \
-                   http://127.0.0.1:8000/users/active/%(token)s</a>' \
+                   '<a href="http://127.0.0.1/users/active/%(token)s"> \
+                   http://127.0.0.1/users/active/%(token)s</a>' \
                    % {'name': username, 'token': token}
 
     # 调用django的send_mail发送邮件
@@ -70,8 +70,8 @@ def send_change_password(username, email, token):
     recipient_list = [email]
     html_message = '<h3>尊敬的%(name)s:</h3> 欢迎来到天天生鲜' \
                    '请点击以下链接更改您的用户密码：</br>' \
-                   '<a href="http://127.0.0.1:8000/users/change/%(token)s"> \
-                   http://127.0.0.1:8000/users/change/%(token)s</a>' \
+                   '<a href="http://127.0.0.1/users/change/%(token)s"> \
+                   http://127.0.0.1/users/change/%(token)s</a>' \
                    % {'name': username, 'token': token}
     send_mail(subject, message, from_email, recipient_list, html_message=html_message)
 

@@ -846,3 +846,59 @@ Sat Apr  7 23:41:37 2018 - uWSGI worker 4 screams: UAAAAAAH my master disconnect
 Sat Apr  7 23:41:37 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
 Sat Apr  7 23:41:37 2018 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
 Sat Apr  7 23:41:37 2018 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.17 (64bit) on [Mon Apr 23 22:25:01 2018] ***
+compiled with version: 5.4.0 20160609 on 05 April 2018 11:46:46
+os: Linux-4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016
+nodename: ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /dailyfresh
+writing pidfile to uwsgi.pid
+detected binary path: /home/python/.virtualenvs/django_py3/bin/uwsgi
+chdir() to /dailyfresh
+your processes number limit is 12053
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8080 fd 3
+Python version: 3.5.2 (default, Nov 23 2017, 16:37:01)  [GCC 5.4.0 20160609]
+Set PythonHome to /home/python/.virtualenvs/django_py3
+Python main interpreter initialized at 0x20172b0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x20172b0 pid: 4304 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 4304)
+spawned uWSGI worker 1 (pid: 4308, cores: 2)
+spawned uWSGI worker 2 (pid: 4309, cores: 2)
+spawned uWSGI worker 3 (pid: 4310, cores: 2)
+spawned uWSGI worker 4 (pid: 4312, cores: 2)
+[pid: 4308|app: 0|req: 1/1] 127.0.0.1 () {40 vars in 689 bytes} [Mon Apr 23 22:25:53 2018] GET /js/slideshow.js => generated 3065 bytes in 368 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 4309|app: 0|req: 1/2] 127.0.0.1 () {40 vars in 681 bytes} [Mon Apr 23 22:25:54 2018] GET /favicon.ico => generated 3053 bytes in 298 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 4309|app: 0|req: 2/3] 127.0.0.1 () {42 vars in 793 bytes} [Mon Apr 23 22:25:57 2018] GET /users/register => generated 2609 bytes in 32 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 1/4] 127.0.0.1 () {50 vars in 980 bytes} [Mon Apr 23 22:26:11 2018] POST /users/register => generated 0 bytes in 760 msecs (HTTP/1.1 302) 3 headers in 131 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 2/5] 127.0.0.1 () {44 vars in 832 bytes} [Mon Apr 23 22:26:11 2018] GET /users/login => generated 2142 bytes in 22 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 3/6] 127.0.0.1 () {42 vars in 1052 bytes} [Mon Apr 23 22:26:38 2018] GET /users/active/eyJpYXQiOjE1MjQ0OTM1NzEsImV4cCI6MTUyNDQ5NzE3MSwiYWxnIjoiSFMyNTYifQ.eyJjb25maXJtIjo5fQ.KrLcwFWo9NAXBN4afdtALJPaKrLspwI9Vcz3H2XuL40 => generated 0 bytes in 9 msecs (HTTP/1.1 302) 3 headers in 131 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 4/7] 127.0.0.1 () {42 vars in 790 bytes} [Mon Apr 23 22:26:38 2018] GET /users/login => generated 2142 bytes in 4 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 5/8] 127.0.0.1 () {42 vars in 800 bytes} [Mon Apr 23 22:27:46 2018] GET /users/forget => generated 2292 bytes in 5 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 6/9] 127.0.0.1 () {50 vars in 966 bytes} [Mon Apr 23 22:27:59 2018] POST /users/rec => generated 0 bytes in 9 msecs (HTTP/1.1 302) 3 headers in 131 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 7/10] 127.0.0.1 () {44 vars in 830 bytes} [Mon Apr 23 22:27:59 2018] GET /users/login => generated 2142 bytes in 2 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 8/11] 127.0.0.1 () {42 vars in 1052 bytes} [Mon Apr 23 22:28:26 2018] GET /users/active/eyJpYXQiOjE1MjQ0OTM1NzEsImV4cCI6MTUyNDQ5NzE3MSwiYWxnIjoiSFMyNTYifQ.eyJjb25maXJtIjo5fQ.KrLcwFWo9NAXBN4afdtALJPaKrLspwI9Vcz3H2XuL40 => generated 0 bytes in 10 msecs (HTTP/1.1 302) 3 headers in 131 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 9/12] 127.0.0.1 () {42 vars in 790 bytes} [Mon Apr 23 22:28:26 2018] GET /users/login => generated 2142 bytes in 2 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 10/13] 127.0.0.1 () {42 vars in 1052 bytes} [Mon Apr 23 22:29:30 2018] GET /users/change/eyJpYXQiOjE1MjQ0OTM2NzksImV4cCI6MTUyNDQ5NzI3OSwiYWxnIjoiSFMyNTYifQ.eyJjb25maXJtIjo5fQ.wNaICHl41vkQVULz2ubW_HO3nxIHvV-K3lxHH5OBIeg => generated 2438 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4309|app: 0|req: 3/14] 127.0.0.1 () {50 vars in 1362 bytes} [Mon Apr 23 22:29:40 2018] POST /users/change/eyJpYXQiOjE1MjQ0OTM2NzksImV4cCI6MTUyNDQ5NzI3OSwiYWxnIjoiSFMyNTYifQ.eyJjb25maXJtIjo5fQ.wNaICHl41vkQVULz2ubW_HO3nxIHvV-K3lxHH5OBIeg => generated 0 bytes in 89 msecs (HTTP/1.1 302) 3 headers in 131 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 11/15] 127.0.0.1 () {44 vars in 960 bytes} [Mon Apr 23 22:29:40 2018] GET /users/login => generated 2142 bytes in 13 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 0)
+[pid: 4312|app: 0|req: 12/16] 127.0.0.1 () {50 vars in 969 bytes} [Mon Apr 23 22:29:49 2018] POST /users/login => generated 0 bytes in 59 msecs (HTTP/1.1 302) 6 headers in 392 bytes (1 switches on core 1)
+[pid: 4308|app: 0|req: 2/17] 127.0.0.1 () {44 vars in 817 bytes} [Mon Apr 23 22:29:49 2018] GET /index => generated 16530 bytes in 461 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 13/18] 127.0.0.1 () {40 vars in 694 bytes} [Mon Apr 23 22:29:49 2018] GET /js/slideshow.js => generated 3065 bytes in 17 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 4310|app: 0|req: 1/19] 127.0.0.1 () {42 vars in 794 bytes} [Mon Apr 23 22:29:53 2018] GET /users/logout => generated 0 bytes in 626 msecs (HTTP/1.1 302) 4 headers in 210 bytes (1 switches on core 0)
+[pid: 4308|app: 0|req: 3/20] 127.0.0.1 () {42 vars in 736 bytes} [Mon Apr 23 22:29:54 2018] GET /index => generated 16482 bytes in 184 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 4309|app: 0|req: 4/21] 127.0.0.1 () {40 vars in 650 bytes} [Mon Apr 23 22:29:54 2018] GET /js/slideshow.js => generated 3065 bytes in 4 msecs (HTTP/1.1 404) 2 headers in 80 bytes (1 switches on core 1)
+[pid: 4312|app: 0|req: 14/22] 127.0.0.1 () {42 vars in 748 bytes} [Mon Apr 23 22:29:58 2018] GET /users/login => generated 2142 bytes in 2 msecs (HTTP/1.1 200) 4 headers in 224 bytes (1 switches on core 1)
+[pid: 4309|app: 0|req: 5/23] 127.0.0.1 () {50 vars in 925 bytes} [Mon Apr 23 22:30:01 2018] POST /users/login => generated 2169 bytes in 65 msecs (HTTP/1.1 200) 5 headers in 299 bytes (1 switches on core 0)
