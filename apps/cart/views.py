@@ -22,7 +22,7 @@ class CartAddVies(View):
         """
 
         if not request.user.is_authenticated():
-            return JsonResponse({'code': 1,'errmsg': '请先登录'})
+            return JsonResponse({'code': 1, 'errmsg': '请先登录'})
         user_id = request.user.id
         sku_id = request.POST.get('sku_id')
         count = request.POST.get('count')
@@ -48,10 +48,10 @@ class CartAddVies(View):
         vals = strict_redis.hvals(key)
         for val in vals:
             cart_count += int(val)
-        context ={
+        context = {
             'code': 0,
             'cart_count': cart_count
-             }
+        }
         return JsonResponse(context)
 
 
@@ -124,19 +124,3 @@ class CartDeleteView(View):
         key = 'cart_%s' % request.user.id
         sr.hdel(key, sku_id)
         return JsonResponse({'code': 0, 'errmssg': '删除商品成功'})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

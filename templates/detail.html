@@ -279,10 +279,11 @@
                 //result服务器返回结果数据
                 // {'code': 1, 'errmsg': '请先登录'}
                 // {'code': 0,'total_count': 2}
+{#                alert(result.code);#}
                 if (result.code == 0) {
                     //添加到购物车成功
 
-                    $('#show_count').text(result.cart_count)
+                    $('#show_count').text(result.cart_count);
                 }else{
                     //请求失败
                     alert(result.errmsg);
@@ -298,7 +299,6 @@
             var sku_id = $(this).attr('sku_id');
             var count = $('.num_show').val();
             var token = $('input[name="csrfmiddlewaretoken"]').val();
-            alert(sku_id + ' ' + count)
 
             // 定义post请求参数
             var params = {
@@ -308,13 +308,15 @@
             };
 
             // 发起post请求，跳转到/orders/buy页面
-            $.post('/orders/buy', params,function () {
-                window.location.href = '/orders/place';
+            $.post('/orders/buy', params,function (response) {
+                if (response.code = 0) {
+                    window.location.href = '/orders/place';
+                } else {
+                    alert(response.message);
+                }
             });
             });
 
-
-        {% comment %}
 		var $add_x = $('#add_cart').offset().top;
 		var $add_y = $('#add_cart').offset().left;
 
@@ -328,11 +330,11 @@
 				'top': $to_x+7},
 				"fast", function() {
 					$(".add_jump").fadeOut('fast',function(){
-						$('#show_count').html(2);
+						$('#show_count').html();
 					});
 
 			});
-		}){% endcomment %}
+		});
 	</script>
 	
 </body>

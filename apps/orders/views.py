@@ -281,18 +281,18 @@ class BuyView(View):
         sku_id = request.POST.get('sku_id')
         count = request.POST.get('count')
         if not request.user.is_authenticated():
-            return JsonResponse({'code': 1, 'errmsg': '请先登录'})
+            return JsonResponse({'code': 1, 'message': '请先登录'})
         if not all([sku_id, count]):
-            return JsonResponse({'code': 2, 'errmsg': '参数不能为空'})
+            return JsonResponse({'code': 2, 'message': '参数不能为空'})
         try:
             count = int(count)
         except Exception:
-            return JsonResponse({'code': 3, 'errmsg': '购买数量不合法'})
+            return JsonResponse({'code': 3, 'message': '购买数量不合法'})
         sku = GoodsSKU.objects.get(id=sku_id)
         if not sku:
-            return JsonResponse({'code': 4, 'errmsg': '商品不存在'})
+            return JsonResponse({'code': 4, 'message': '商品不存在'})
         if count > sku.stock:
-            return JsonResponse({'code': 5, 'errmsg': '商品库存不足'})
+            return JsonResponse({'code': 5, 'message': '商品库存不足'})
         strict_redis = get_redis_connection()
         key = 'cart_%s' % request.user.id
         strict_redis.hset(key, sku_id, count)
