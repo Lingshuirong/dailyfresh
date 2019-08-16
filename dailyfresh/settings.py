@@ -140,7 +140,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = '18122702544@163.com'
-EMAIL_HOST_PASSWORD = 'lsr686242'
+EMAIL_HOST_PASSWORD = 'agbcefffff'
 EMAIL_FROM = '天天生鲜<18122702544@163.com>'
 
 # 配置login
